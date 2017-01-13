@@ -62,7 +62,14 @@ angular.module('starter.controllers', [])
   };
 
   $scope.createItem = function(item) {
-
+    $http.post('http://localhost:3000/api/items', {
+      english: item.english,
+      pinyin: item.pinyin
+    }).then(function(response) {
+      console.log("successfully POST'd item");
+    }, function(err) {
+      console.log(err);
+    });
   };
 
   $scope.closeNewItem = function() {
