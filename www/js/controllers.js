@@ -25,4 +25,15 @@ angular.module('starter.controllers', [])
   $scope.settings = {
     enableFriends: true
   };
-});
+})
+
+.controller('IndexCtrl', function($scope, $http) {
+  $http.get('http://localhost:3000/api/items').then(function(response) {
+    //the response from the server is now contained in 'response'
+    console.log(response);
+    $scope.items = response.data;
+  }, function(error) {
+    //there was an error fetching from the server
+    console.log(error);
+  });
+})

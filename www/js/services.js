@@ -47,4 +47,39 @@ angular.module('starter.services', [])
       return null;
     }
   };
-});
+})
+/*
+.factory('Items', function($http) {
+  var items = [
+    {
+      id: 0,
+      english: 'HELLO',
+      pinyin: 'NI HAO'
+    },
+    {
+      id: 1,
+      english: 'BYE BYE',
+      pinyin: 'ZAIJIAN'
+    },
+    {
+      id: 2,
+      english: 'LOVE YOU',
+      pinyin: 'AI NI'
+    },
+    {
+      id: 3,
+      english: 'FAT FRIEND',
+      pinyin: 'PANG PEN YO'
+    }
+  ];
+
+  return {
+    all: function() {
+      return items;
+    },
+    remove: function(id) {
+      items.r
+    }
+  }
+})
+*/
