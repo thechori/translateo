@@ -27,13 +27,27 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('IndexCtrl', function($scope, $http) {
+.controller('ItemCtrl', function($scope, $http) {
   $http.get('http://localhost:3000/api/items').then(function(response) {
     //the response from the server is now contained in 'response'
-    console.log(response);
     $scope.items = response.data;
+    console.log(response.data);
   }, function(error) {
     //there was an error fetching from the server
     console.log(error);
   });
+
+  $scope.removeItem = function(_id) {
+    console.log("removeItem("+_id+")");
+    $http.delete('http://localhost:3000/api/items/'+_id).then(function(response) {
+      // Remove from DOM?
+      
+    }, function(err) {
+      console.log(err);
+    });
+  };
+
+  $scope.newItem = function() {
+    // Show modal
+  };
 })
