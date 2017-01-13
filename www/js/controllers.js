@@ -27,7 +27,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ItemCtrl', function($scope, $http) {
+.controller('ItemCtrl', function($scope, $http, $ionicModal) {
   $http.get('http://localhost:3000/api/items').then(function(response) {
     //the response from the server is now contained in 'response'
     $scope.items = response.data;
@@ -41,13 +41,32 @@ angular.module('starter.controllers', [])
     console.log("removeItem("+_id+")");
     $http.delete('http://localhost:3000/api/items/'+_id).then(function(response) {
       // Remove from DOM?
-      
+
     }, function(err) {
       console.log(err);
     });
   };
 
+  $ionicModal.fromTemplateUrl('./templates/newItemTemplate.html', function(modal) {
+    $scope.itemModal = modal;
+    console.log($scope);
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
   $scope.newItem = function() {
     // Show modal
+    console.log("newItem()");
+    $scope.itemModal.show();
+  };
+
+  $scope.createItem = function(item) {
+
+  };
+
+  $scope.closeNewItem = function() {
+    // document.getByElementId('title')
+    $scope.itemModal.hide();
   };
 })

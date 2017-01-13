@@ -1,7 +1,7 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
-    <h2>Translateo ------------- <button class="button button-icon ion-plus" ng-click="newItem()"></button></h2>
     <div ng-controller="ItemCtrl as ic">
+      <h2>Translateo ------------- <button class="button button-icon ion-plus" ng-click="newItem()"></button></h2>
       <ul>
         <li ng-repeat="item in items">
           {{item.english}} ({{item.pinyin}}) ------------- <button ng-click="removeItem(item._id)"><i class="icon ion-close"></i></button>
