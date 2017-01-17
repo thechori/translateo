@@ -37,11 +37,23 @@ angular.module('starter.controllers', [])
     console.log(error);
   });
 
+  $scope.getItems = function() {
+    console.log("getItems()");
+
+    $http.get('http://localhost:3000/api/items').then(function(response) {
+      //the response from the server is now contained in 'response'
+      $scope.items = response.data;
+      console.log(response.data);
+    }, function(error) {
+      //there was an error fetching from the server
+      console.log(error);
+    });
+  };
+
   $scope.removeItem = function(_id) {
     console.log("removeItem("+_id+")");
     $http.delete('http://localhost:3000/api/items/'+_id).then(function(response) {
-      // Remove from DOM?
-
+      $scope.getItems();
     }, function(err) {
       console.log(err);
     });
@@ -75,5 +87,7 @@ angular.module('starter.controllers', [])
   $scope.closeNewItem = function() {
     // document.getByElementId('title')
     $scope.itemModal.hide();
+    // Get new data and assign to $scope for refreshing the view
+    // $scope.getItems();
   };
 })
