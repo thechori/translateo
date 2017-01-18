@@ -79,12 +79,15 @@ angular.module('starter.controllers', [])
       pinyin: item.pinyin
     }).then(function(response) {
       console.log("successfully POST'd item");
+      $scope.getItems();
+      $scope.closeNewItem();
     }, function(err) {
       console.log(err);
     });
   };
 
   $scope.closeNewItem = function() {
+    console.log("closeNewItem()");
     // document.getByElementId('title')
     $scope.itemModal.hide();
     // Get new data and assign to $scope for refreshing the view
