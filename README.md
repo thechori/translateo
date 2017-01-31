@@ -13,7 +13,7 @@ Mobile application for easily storing key/value (English/Pinyin) pairs using the
 ```
 
 ## TODO
-- [ ] Complete user interface
+- [ ] Complete user interface (import 'perfect-translateo-template' [angular project] code)
 - [ ] Login functionality
 - [ ] Design app icon
 - [ ] Upload to App Store
