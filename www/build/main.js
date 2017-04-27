@@ -55707,7 +55707,7 @@ HomePage = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__contact_contact__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(100);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__phrases_phrases__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__items_items__ = __webpack_require__(197);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TabsPage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -55725,13 +55725,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var TabsPage = (function () {
     function TabsPage() {
         this.tab1Root = __WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */];
-        this.tab2Root = __WEBPACK_IMPORTED_MODULE_3__phrases_phrases__["a" /* PhrasesPage */];
+        this.tab2Root = __WEBPACK_IMPORTED_MODULE_3__items_items__["a" /* ItemsPage */];
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_1__contact_contact__["a" /* ContactPage */];
     }
     return TabsPage;
 }());
 TabsPage = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Phrases" tabIcon="book"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/tabs/tabs.html"*/
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Items" tabIcon="book"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/tabs/tabs.html"*/
     }),
     __metadata("design:paramtypes", [])
 ], TabsPage);
@@ -74153,7 +74153,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"../pages/phrases/phrases.module": [
+	"../pages/items/items.module": [
 		263,
 		0
 	]
@@ -74185,7 +74185,7 @@ webpackAsyncContext.id = 194;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(101);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_phrases_phrases__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_items_items__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_splash_screen__ = __webpack_require__(104);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
@@ -74219,13 +74219,13 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__["a" /* ContactPage */],
             __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
             __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__["a" /* TabsPage */],
-            __WEBPACK_IMPORTED_MODULE_8__pages_phrases_phrases__["a" /* PhrasesPage */]
+            __WEBPACK_IMPORTED_MODULE_8__pages_items_items__["a" /* ItemsPage */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                 links: [
-                    { loadChildren: '../pages/phrases/phrases.module#PhrasesModule', name: 'PhrasesPage', segment: 'phrases', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/items/items.module#ItemsModule', name: 'ItemsPage', segment: 'items', priority: 'low', defaultHistory: [] }
                 ]
             })
         ],
@@ -74236,7 +74236,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__pages_contact_contact__["a" /* ContactPage */],
             __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
             __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__["a" /* TabsPage */],
-            __WEBPACK_IMPORTED_MODULE_8__pages_phrases_phrases__["a" /* PhrasesPage */]
+            __WEBPACK_IMPORTED_MODULE_8__pages_items_items__["a" /* ItemsPage */]
         ],
         providers: [
             __WEBPACK_IMPORTED_MODULE_9__ionic_native_status_bar__["a" /* StatusBar */],
@@ -74441,7 +74441,7 @@ var platformBrowserDynamic = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PhrasesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ItemsPage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -74454,52 +74454,51 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /**
- * Generated class for the Phrases page.
+ * Generated class for the items page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-var PhrasesPage = (function () {
-    function PhrasesPage(navCtrl, navParams) {
+var ItemsPage = (function () {
+    function ItemsPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.phrases = [];
-        this.phrases.push({
+        this.items = [];
+        this.items.push({
             english: "Hello",
             pinyin: "Ni hao",
             tag: "greeting"
         });
-        this.phrases.push({
+        this.items.push({
             english: "Good bye",
             pinyin: "Zai jian",
             tag: "greeting"
         });
-        this.phrases.push({
+        this.items.push({
             english: "Pretty",
             pinyin: "Pya liang",
             tag: "description"
         });
-        this.phrases.push({
+        this.items.push({
             english: "I'm hungry",
             pinyin: "Wô èle",
             tag: "phrase"
         });
     }
-    PhrasesPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad Phrases');
+    ItemsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad items');
     };
-    return PhrasesPage;
+    return ItemsPage;
 }());
-PhrasesPage = __decorate([
+ItemsPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-phrases',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/phrases/phrases.html"*/'<!--\n  Generated template for the Phrases page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Phrases</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <!-- <ul>\n    <li>Phrase #1</li>\n    <li>Phrase #2</li>\n    <li>Phrase #3</li>\n  </ul> -->\n  <ion-list>\n    <button ion-item *ngFor="let p of phrases" (click)="openPhrase(p)">\n      {{p.english}}\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/phrases/phrases.html"*/,
+        selector: 'page-items',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/'<!--\n  Generated template for the Items page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Items</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <button ion-item *ngFor="let i of items" (click)="openItem(i)">\n      {{i.english}}\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
-], PhrasesPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+], ItemsPage);
 
-var _a, _b;
-//# sourceMappingURL=phrases.js.map
+//# sourceMappingURL=items.js.map
 
 /***/ }),
 /* 198 */
