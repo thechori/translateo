@@ -15,9 +15,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ItemsPage {
 
   items: Array<{english: string, pinyin: string, tag: string}>;
+  myName: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.items = [];
+    this.myName = "Ryan";
 
     this.items.push({
       english: "Hello",
@@ -42,10 +44,20 @@ export class ItemsPage {
       pinyin: "Wô èle",
       tag: "phrase"
     });
+
+  }
+
+  openPage() {
+    console.log("open!!");
+  }
+
+  sayHello() {
+    console.log("hello");
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad items');
+    this.sayHello();
   }
 
 }

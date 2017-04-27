@@ -14,8 +14,10 @@
 
 
 <ion-content padding>
+  <p>{{myName}}</p>
+  <button (click)="sayHello()">Hello</button>
   <ion-list>
-    <button ion-item *ngFor="let i of items" (click)="openItem(i)">
+    <button ion-item *ngFor="let i of items" (click)="alert('sup')">
       {{i.english}}
     </button>
   </ion-list>

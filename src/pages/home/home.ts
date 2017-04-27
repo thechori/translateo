@@ -11,4 +11,8 @@ export class HomePage {
 
   }
 
+  homeBtn() {
+    console.log("clickity");
+  }
+
 }
