@@ -14,9 +14,14 @@
 
 
 <ion-content padding>
-  <ul>
+  <!-- <ul>
     <li>Phrase #1</li>
     <li>Phrase #2</li>
     <li>Phrase #3</li>
-  </ul>
+  </ul> -->
+  <ion-list>
+    <button ion-item *ngFor="let p of phrases" (click)="openPhrase(p)">
+      {{p.english}}
+    </button>
+  </ion-list>
 </ion-content>

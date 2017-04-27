@@ -14,7 +14,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PhrasesPage {
 
+  phrases: Array<{english: string, pinyin: string, tag: string}>;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.phrases = [];
+
+    this.phrases.push({
+      english: "Hello",
+      pinyin: "Ni hao",
+      tag: "greeting"
+    });
+
+    this.phrases.push({
+      english: "Good bye",
+      pinyin: "Zai jian",
+      tag: "greeting"
+    });
+
+    this.phrases.push({
+      english: "Pretty",
+      pinyin: "Pya liang",
+      tag: "description"
+    });
+
+    this.phrases.push({
+      english: "I'm hungry",
+      pinyin: "Wô èle",
+      tag: "phrase"
+    });
   }
 
   ionViewDidLoad() {

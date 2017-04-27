@@ -74463,6 +74463,27 @@ var PhrasesPage = (function () {
     function PhrasesPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.phrases = [];
+        this.phrases.push({
+            english: "Hello",
+            pinyin: "Ni hao",
+            tag: "greeting"
+        });
+        this.phrases.push({
+            english: "Good bye",
+            pinyin: "Zai jian",
+            tag: "greeting"
+        });
+        this.phrases.push({
+            english: "Pretty",
+            pinyin: "Pya liang",
+            tag: "description"
+        });
+        this.phrases.push({
+            english: "I'm hungry",
+            pinyin: "Wô èle",
+            tag: "phrase"
+        });
     }
     PhrasesPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad Phrases');
@@ -74472,11 +74493,12 @@ var PhrasesPage = (function () {
 PhrasesPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-phrases',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/phrases/phrases.html"*/'<!--\n  Generated template for the Phrases page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Phrases</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ul>\n    <li>Phrase #1</li>\n    <li>Phrase #2</li>\n    <li>Phrase #3</li>\n  </ul>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/phrases/phrases.html"*/,
+        selector: 'page-phrases',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/phrases/phrases.html"*/'<!--\n  Generated template for the Phrases page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Phrases</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <!-- <ul>\n    <li>Phrase #1</li>\n    <li>Phrase #2</li>\n    <li>Phrase #3</li>\n  </ul> -->\n  <ion-list>\n    <button ion-item *ngFor="let p of phrases" (click)="openPhrase(p)">\n      {{p.english}}\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/phrases/phrases.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
 ], PhrasesPage);
 
+var _a, _b;
 //# sourceMappingURL=phrases.js.map
 
 /***/ }),
