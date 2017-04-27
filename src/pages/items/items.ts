@@ -55,6 +55,10 @@ export class ItemsPage {
     console.log("hello");
   }
 
+  switchTabs() {
+    this.navCtrl.parent.select(2);
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad items');
     this.sayHello();

@@ -55697,10 +55697,9 @@ HomePage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
         selector: 'page-home',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Welcome to Translateo!</h2>\n  <p>\n    This starter project comes with simple tabs-based layout for apps\n    that are going to primarily use a Tabbed UI.\n  </p>\n  <p>\n    Take a look at the <code>src/pages/</code> directory to add or change tabs,\n    update any existing page or create new pages.\n  </p>\n\n  <button (click)="homeBtn()">Click</button>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/home/home.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
 ], HomePage);
 
-var _a;
 //# sourceMappingURL=home.js.map
 
 /***/ }),
@@ -74159,7 +74158,11 @@ module.exports = g;
 var map = {
 	"../pages/items/items.module": [
 		263,
-		0
+		3
+	],
+	"../pages/signin/signin.module": [
+		264,
+		2
 	]
 };
 function webpackAsyncContext(req) {
@@ -74229,7 +74232,8 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* MyApp */], {}, {
                 links: [
-                    { loadChildren: '../pages/items/items.module#ItemsModule', name: 'ItemsPage', segment: 'items', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/items/items.module#ItemsModule', name: 'ItemsPage', segment: 'items', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/signin/signin.module#SigninModule', name: 'Signin', segment: 'signin', priority: 'low', defaultHistory: [] }
                 ]
             })
         ],
@@ -74496,6 +74500,9 @@ var ItemsPage = (function () {
     ItemsPage.prototype.sayHello = function () {
         console.log("hello");
     };
+    ItemsPage.prototype.switchTabs = function () {
+        this.navCtrl.parent.select(2);
+    };
     ItemsPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad items');
         this.sayHello();
@@ -74505,12 +74512,11 @@ var ItemsPage = (function () {
 ItemsPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-items',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/'<!--\n  Generated template for the Items page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Items</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <p>{{myName}}</p>\n  <button (click)="sayHello()">Hello</button>\n  <ion-list>\n    <button ion-item *ngFor="let i of items" (click)="alert(\'sup\')">\n      {{i.english}}\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/,
+        selector: 'page-items',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/'<!--\n  Generated template for the Items page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Items</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <p>{{myName}}</p>\n  <button (click)="switchTabs()">Hello</button>\n  <ion-list>\n    <button ion-item *ngFor="let i of items" (click)="alert(\'sup\')">\n      {{i.english}}\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/,
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], ItemsPage);
 
-var _a, _b;
 //# sourceMappingURL=items.js.map
 
 /***/ }),
@@ -74553,10 +74559,9 @@ var MyApp = (function () {
 MyApp = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/app/app.html"*/
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]) === "function" && _c || Object])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);
 
-var _a, _b, _c;
 //# sourceMappingURL=app.component.js.map
 
 /***/ }),
