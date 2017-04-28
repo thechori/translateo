@@ -10,17 +10,15 @@
   </ion-toolbar> -->
 
   <ion-navbar>
-    <ion-buttons start>
-      <button ion-button icon-only color="royal">
-        <ion-icon name="search"></ion-icon>
-      </button>
-    </ion-buttons>
     <ion-title>Items</ion-title>
-    <ion-buttons end>
+
+    <!-- TODO: Migrate from ion-button in the ion-navbar to a FAB (Floating Action Button)
+                for a more user-friendly experience -->
+    <!-- <ion-buttons end>
       <button ion-button icon-only color="royal">
-        <ion-icon name="settings"></ion-icon>
+        <ion-icon name="add"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 
 </ion-header>
@@ -38,4 +36,8 @@
       {{i.english}}
     </button>
   </ion-list>
+
+  <ion-fab right bottom>
+    <button ion-fab mini><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
