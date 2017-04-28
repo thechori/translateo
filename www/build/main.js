@@ -55655,12 +55655,13 @@ var ItemsPage = (function () {
         this.alertCtrl = alertCtrl;
         this.modalCtrl = modalCtrl;
         this.items = [];
-        this.myName = "Ryan";
-        this.items.push({
-            english: "Hello",
-            pinyin: "Ni hao",
-            tag: "greeting"
-        });
+        for (var i = 0; i < 10; i++) {
+            this.items.push({
+                english: "Hello",
+                pinyin: "Ni hao",
+                tag: "greeting"
+            });
+        }
         this.items.push({
             english: "Good bye",
             pinyin: "Zai jian",
@@ -55695,7 +55696,7 @@ var ItemsPage = (function () {
     ItemsPage.prototype.editItem = function () {
         // let editModal = this.modalCtrl.create(ModalContentPage);
         // editModal.present();
-        this.greetings.hello();
+        console.log("editItem()");
     };
     ItemsPage.prototype.deleteItem = function () {
         var alert = this.alertCtrl.create({
@@ -55713,7 +55714,7 @@ var ItemsPage = (function () {
 ItemsPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-items',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/'<!--\n  Generated template for the Items page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <!-- <ion-toolbar>\n\n  </ion-toolbar> -->\n\n  <ion-navbar>\n    <ion-title>Items</ion-title>\n\n    <!-- TODO: Migrate from ion-button in the ion-navbar to a FAB (Floating Action Button)\n                for a more user-friendly experience -->\n    <!-- <ion-buttons end>\n      <button ion-button icon-only color="royal">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <!-- TODO: Use ion-item-group for grouping things alphabetically! -->\n  <!-- TODO: Show Modal when editing an item, Popup alert when deleting -->\n\n  <!-- Search bar -->\n  <ion-searchbar></ion-searchbar>\n\n  <!-- List of Items -->\n  <ion-list>\n    <ion-item-sliding *ngFor="let i of items">\n      <ion-item>\n        {{i.english}}\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button color="primary" (click)="editItem()">\n          <ion-icon name="create"></ion-icon>\n          Edit\n        </button>\n        <button ion-button color="danger" (click)="deleteItem()">\n          <ion-icon name="trash"></ion-icon>\n          Delete\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n\n  <!-- FAB (Floating Action Button) -->\n  <ion-fab right bottom>\n    <button ion-fab mini (click)="newItem()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/,
+        selector: 'page-items',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/'<!--\n  Generated template for the Items page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <!-- <ion-toolbar>\n\n  </ion-toolbar> -->\n\n  <ion-navbar>\n    <ion-title>Items</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <!-- TODO: Use ion-item-group for grouping things alphabetically! -->\n  <!-- TODO: Show Modal when editing an item, Popup alert when deleting -->\n\n  <!-- Search bar -->\n  <!-- <ion-searchbar></ion-searchbar> -->\n\n  <!-- List of Items -->\n  <ion-list>\n    <ion-item-sliding *ngFor="let i of items">\n      <ion-item>\n        {{i.english}}\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button color="primary" (click)="editItem()">\n          <ion-icon name="create"></ion-icon>\n          Edit\n        </button>\n        <button ion-button color="danger" (click)="deleteItem()">\n          <ion-icon name="trash"></ion-icon>\n          Delete\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n\n  <!-- FAB (Floating Action Button) -->\n  <ion-fab right bottom>\n    <button ion-fab mini (click)="newItem()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/,
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _d || Object])
 ], ItemsPage);

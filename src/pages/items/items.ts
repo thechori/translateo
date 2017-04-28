@@ -32,13 +32,14 @@ export class ItemsPage {
   ) {
 
     this.items = [];
-    this.myName = "Ryan";
 
-    this.items.push({
-      english: "Hello",
-      pinyin: "Ni hao",
-      tag: "greeting"
-    });
+    for (var i = 0; i < 10; i++) {
+      this.items.push({
+        english: "Hello",
+        pinyin: "Ni hao",
+        tag: "greeting"
+      });
+    }
 
     this.items.push({
       english: "Good bye",
@@ -82,7 +83,7 @@ export class ItemsPage {
   editItem() {
     // let editModal = this.modalCtrl.create(ModalContentPage);
     // editModal.present();
-    this.greetings.hello();
+    console.log("editItem()");
   }
 
   deleteItem() {
