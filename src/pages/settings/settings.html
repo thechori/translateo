@@ -8,10 +8,26 @@
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
+    <ion-list-header>Basic Information</ion-list-header>
     <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
+      <ion-input type="text" placeholder="First name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" placeholder="Last name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gender</ion-label>
+      <ion-select>
+        <ion-option value="male">Male</ion-option>
+        <ion-option value="female">Female</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>Preferences</ion-list-header>
+    <ion-item>
+      <ion-label>Pro Mode</ion-label>
+      <ion-toggle checked="false"></ion-toggle>
     </ion-item>
   </ion-list>
 </ion-content>

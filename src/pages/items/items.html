@@ -5,17 +5,34 @@
   Ionic pages and navigation.
 -->
 <ion-header>
+  <!-- <ion-toolbar>
+
+  </ion-toolbar> -->
 
   <ion-navbar>
+    <ion-buttons start>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>Items</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <p>{{myName}}</p>
-  <button (click)="switchTabs()">Hello</button>
+<ion-content>
+
+  <!-- TODO: Use ion-item-group for grouping things alphabetically! -->
+  <!-- TODO: Also, use ion-item-sliding for ability to quickly delete or edit items -->
+  <!-- TODO: Show Modal when editing an item, Popup alert when deleting -->
+  <!-- TODO: Implement ion-searchbar for quickly finding an item -->
+
   <ion-list>
     <button ion-item *ngFor="let i of items" (click)="alert('sup')">
       {{i.english}}
