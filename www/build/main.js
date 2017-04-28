@@ -55739,7 +55739,7 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Welcome to Translateo!</h2>\n  <p>\n    Learning Mandarin one interruption at a time.\n  </p>\n\n  <button (click)="homeBtn()">Click</button>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/home/home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Welcome to Translateo!</h2>\n  <p><i>Learning Mandarin one interruption at a time.</i></p>\n  <br>\n  <p>This app was made to faciliate my learning of the Mandarin language.</p>\n  <br>\n  <button ion-button (click)="startQuiz()">Start Quiz</button>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/home/home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
 ], HomePage);
