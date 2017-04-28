@@ -61,6 +61,7 @@ export class ItemsPage {
   }
 
   newItem() {
+    // TODO: Utilize a Modal instead of the Alert to allow for inputting data
     let alert =  this.alertCtrl.create({
       title: "Create New Item",
       subTitle: "Let's create a new Item, shall we??",
