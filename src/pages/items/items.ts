@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { ModalController } from 'ionic-angular';
+import { ViewController } from 'ionic-angular';
+import { ModalContentPage } from './editModal.js';
+
+// import { Bob } from './greetings.ts';
 
 /**
  * Generated class for the items page.
@@ -18,7 +23,14 @@ export class ItemsPage {
   items: Array<{english: string, pinyin: string, tag: string}>;
   myName: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(
+    // public greetings: Bob,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController
+  ) {
+
     this.items = [];
     this.myName = "Ryan";
 
@@ -52,10 +64,6 @@ export class ItemsPage {
     console.log("open!!");
   }
 
-  sayHello() {
-    console.log("hello");
-  }
-
   switchTabs() {
     this.navCtrl.parent.select(2);
   }
@@ -71,9 +79,23 @@ export class ItemsPage {
     alert.present();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad items');
-    this.sayHello();
+  editItem() {
+    // let editModal = this.modalCtrl.create(ModalContentPage);
+    // editModal.present();
+    this.greetings.hello();
   }
 
+  deleteItem() {
+    let alert =  this.alertCtrl.create({
+      title: "Delete Item",
+      subTitle: "Are you sure you want to delete this item?",
+      buttons: ['Delete', 'Cancel']
+    });
+
+    alert.present();
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad items');
+  }
 }

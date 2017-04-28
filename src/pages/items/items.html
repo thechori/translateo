@@ -27,7 +27,6 @@
 <ion-content>
 
   <!-- TODO: Use ion-item-group for grouping things alphabetically! -->
-  <!-- TODO: Also, use ion-item-sliding for ability to quickly delete or edit items -->
   <!-- TODO: Show Modal when editing an item, Popup alert when deleting -->
 
   <!-- Search bar -->
@@ -35,16 +34,16 @@
 
   <!-- List of Items -->
   <ion-list>
-    <ion-item-sliding *ngFor="let i of items" (click)="alert('sup')">
+    <ion-item-sliding *ngFor="let i of items">
       <ion-item>
         {{i.english}}
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary">
+        <button ion-button color="primary" (click)="editItem()">
           <ion-icon name="create"></ion-icon>
           Edit
         </button>
-        <button ion-button color="danger">
+        <button ion-button color="danger" (click)="deleteItem()">
           <ion-icon name="trash"></ion-icon>
           Delete
         </button>
