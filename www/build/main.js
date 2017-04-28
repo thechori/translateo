@@ -30662,7 +30662,7 @@ function BaseInput_tsickle_Closure_declarations() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_alert_alert__ = __webpack_require__(51);
 /* unused harmony reexport Alert */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_alert_alert_controller__ = __webpack_require__(108);
-/* unused harmony reexport AlertController */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_6__components_alert_alert_controller__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_alert_alert_component__ = __webpack_require__(50);
 /* unused harmony reexport AlertCmp */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_app_app__ = __webpack_require__(6);
@@ -30875,7 +30875,7 @@ function BaseInput_tsickle_Closure_declarations() {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_110__platform_dom_controller__ = __webpack_require__(8);
 /* unused harmony reexport DomController */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_111__platform_platform__ = __webpack_require__(3);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_111__platform_platform__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_111__platform_platform__["a"]; });
 /* unused harmony reexport setupPlatform */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_112__tap_click_haptic__ = __webpack_require__(36);
 /* unused harmony reexport Haptic */
@@ -55637,6 +55637,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 /**
  * Generated class for the items page.
  *
@@ -55644,9 +55645,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * on Ionic pages and navigation.
  */
 var ItemsPage = (function () {
-    function ItemsPage(navCtrl, navParams) {
+    function ItemsPage(navCtrl, navParams, alertCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.alertCtrl = alertCtrl;
         this.items = [];
         this.myName = "Ryan";
         this.items.push({
@@ -55679,6 +55681,14 @@ var ItemsPage = (function () {
     ItemsPage.prototype.switchTabs = function () {
         this.navCtrl.parent.select(2);
     };
+    ItemsPage.prototype.newItem = function () {
+        var alert = this.alertCtrl.create({
+            title: "Create New Item",
+            subTitle: "Let's create a new Item, shall we??",
+            buttons: ['Create']
+        });
+        alert.present();
+    };
     ItemsPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad items');
         this.sayHello();
@@ -55688,11 +55698,12 @@ var ItemsPage = (function () {
 ItemsPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-items',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/'<!--\n  Generated template for the Items page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <!-- <ion-toolbar>\n\n  </ion-toolbar> -->\n\n  <ion-navbar>\n    <ion-title>Items</ion-title>\n\n    <!-- TODO: Migrate from ion-button in the ion-navbar to a FAB (Floating Action Button)\n                for a more user-friendly experience -->\n    <!-- <ion-buttons end>\n      <button ion-button icon-only color="royal">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <!-- TODO: Use ion-item-group for grouping things alphabetically! -->\n  <!-- TODO: Also, use ion-item-sliding for ability to quickly delete or edit items -->\n  <!-- TODO: Show Modal when editing an item, Popup alert when deleting -->\n  <!-- TODO: Implement ion-searchbar for quickly finding an item -->\n\n  <ion-list>\n    <button ion-item *ngFor="let i of items" (click)="alert(\'sup\')">\n      {{i.english}}\n    </button>\n  </ion-list>\n\n  <ion-fab right bottom>\n    <button ion-fab mini><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/,
+        selector: 'page-items',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/'<!--\n  Generated template for the Items page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <!-- <ion-toolbar>\n\n  </ion-toolbar> -->\n\n  <ion-navbar>\n    <ion-title>Items</ion-title>\n\n    <!-- TODO: Migrate from ion-button in the ion-navbar to a FAB (Floating Action Button)\n                for a more user-friendly experience -->\n    <!-- <ion-buttons end>\n      <button ion-button icon-only color="royal">\n        <ion-icon name="add"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <!-- TODO: Use ion-item-group for grouping things alphabetically! -->\n  <!-- TODO: Also, use ion-item-sliding for ability to quickly delete or edit items -->\n  <!-- TODO: Show Modal when editing an item, Popup alert when deleting -->\n  <!-- TODO: Implement ion-searchbar for quickly finding an item -->\n\n  <ion-list>\n    <button ion-item *ngFor="let i of items" (click)="alert(\'sup\')">\n      {{i.english}}\n    </button>\n  </ion-list>\n\n  <ion-fab right bottom>\n    <button ion-fab mini (click)="newItem()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* AlertController */]) === "function" && _c || Object])
 ], ItemsPage);
 
+var _a, _b, _c;
 //# sourceMappingURL=items.js.map
 
 /***/ }),
@@ -55739,7 +55750,7 @@ var HomePage = (function () {
 }());
 HomePage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-home',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Welcome to Translateo!</h2>\n  <p><i>Learning Mandarin one interruption at a time.</i></p>\n  <br>\n  <p>This app was made to faciliate my learning of the Mandarin language.</p>\n  <br>\n  <button ion-button (click)="startQuiz()">Start Quiz</button>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/home/home.html"*/
+        selector: 'page-home',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Welcome to Translateo!</h2>\n  <p><i>Learning Mandarin one interruption at a time.</i></p>\n  <br>\n  <p>This app was made to faciliate my learning of the Mandarin language.</p>\n  <br>\n  <button ion-button color="secondary" (click)="startQuiz()">Start Quiz</button>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/home/home.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
 ], HomePage);
@@ -74521,7 +74532,7 @@ var MyApp = (function () {
 MyApp = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/app/app.html"*/
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map

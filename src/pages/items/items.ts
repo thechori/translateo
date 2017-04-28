@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the items page.
@@ -17,7 +18,7 @@ export class ItemsPage {
   items: Array<{english: string, pinyin: string, tag: string}>;
   myName: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
     this.items = [];
     this.myName = "Ryan";
 
@@ -57,6 +58,16 @@ export class ItemsPage {
 
   switchTabs() {
     this.navCtrl.parent.select(2);
+  }
+
+  newItem() {
+    let alert =  this.alertCtrl.create({
+      title: "Create New Item",
+      subTitle: "Let's create a new Item, shall we??",
+      buttons: ['Create']
+    });
+
+    alert.present();
   }
 
   ionViewDidLoad() {
