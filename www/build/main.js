@@ -111445,6 +111445,7 @@ var ItemService = (function () {
                 .map(function (res) { return res.json(); })
                 .subscribe(function (items) {
                 _this.items = items;
+                console.log(_this.items);
                 resolve(_this.items);
             });
         });

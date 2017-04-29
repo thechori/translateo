@@ -37,6 +37,7 @@ export class ItemService {
         // component
         .subscribe(items => {
           this.items = items;
+          console.log(this.items);
           resolve(this.items);
         });
     });
