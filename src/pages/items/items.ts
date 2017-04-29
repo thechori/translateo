@@ -3,9 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
-import { ModalContentPage } from './editModal.js';
+// import { ModalContentPage } from '../../pages/items/editModal';
+import { ItemService } from '../../providers/item-service';
 
-// import { Bob } from './greetings.ts';
+// import { Greetings } from '../../pages/items/greetings';
 
 /**
  * Generated class for the items page.
@@ -24,11 +25,13 @@ export class ItemsPage {
   myName: string;
 
   constructor(
-    // public greetings: Bob,
+    // public greetings: Greetings,
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    public itemService: ItemService,
+    // public editModal: ModalContentPage
   ) {
 
     this.items = [];
@@ -84,6 +87,7 @@ export class ItemsPage {
     // let editModal = this.modalCtrl.create(ModalContentPage);
     // editModal.present();
     console.log("editItem()");
+    // this.greetings.hello();
   }
 
   deleteItem() {

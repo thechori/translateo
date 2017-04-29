@@ -11,8 +11,35 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ItemService {
 
+  public items: any;
+
   constructor(public http: Http) {
     console.log('Hello ItemService Provider');
+
+    this.load();
+  }
+
+  // Load data
+  load() {
+    console.log("load()");
+
+    if (this.items) {
+      // Already loaded data
+       return Promise.resolve(this.items);
+    }
+
+    // Don't have the data yes
+    return new Promise(resolve => {
+      this.http.get('http://tiirbo-api.herokuapp.com/api/translateo/v1/items')
+      // Call map on the response observable to get the parsed people object
+        .map(res => res.json())
+        // Subscribe to the observable to get the parsed people object and attach it to the
+        // component
+        .subscribe(items => {
+          this.items = items;
+          resolve(this.items);
+        });
+    });
   }
 
 }
