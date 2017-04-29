@@ -21,8 +21,7 @@ import { ItemService } from '../../providers/item-service';
 })
 export class ItemsPage {
 
-  items: Array<{english: string, pinyin: string, tag: string}>;
-  myName: string;
+  public items: any;
 
   constructor(
     // public greetings: Greetings,
@@ -34,42 +33,15 @@ export class ItemsPage {
     // public editModal: ModalContentPage
   ) {
 
-    this.items = [];
-
-    for (var i = 0; i < 10; i++) {
-      this.items.push({
-        english: "Hello",
-        pinyin: "Ni hao",
-        tag: "greeting"
-      });
-    }
-
-    this.items.push({
-      english: "Good bye",
-      pinyin: "Zai jian",
-      tag: "greeting"
-    });
-
-    this.items.push({
-      english: "Pretty",
-      pinyin: "Pya liang",
-      tag: "description"
-    });
-
-    this.items.push({
-      english: "I'm hungry",
-      pinyin: "Wô èle",
-      tag: "phrase"
-    });
-
+    // Load the Items using the ItemService
+    this.loadItems();
   }
 
-  openPage() {
-    console.log("open!!");
-  }
-
-  switchTabs() {
-    this.navCtrl.parent.select(2);
+  // Load items into using ItemService
+  loadItems() {
+    this.itemService.load().then(data => {
+      this.items = data;
+    })
   }
 
   newItem() {

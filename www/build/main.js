@@ -55658,35 +55658,15 @@ var ItemsPage = (function () {
         this.alertCtrl = alertCtrl;
         this.modalCtrl = modalCtrl;
         this.itemService = itemService;
-        this.items = [];
-        for (var i = 0; i < 10; i++) {
-            this.items.push({
-                english: "Hello",
-                pinyin: "Ni hao",
-                tag: "greeting"
-            });
-        }
-        this.items.push({
-            english: "Good bye",
-            pinyin: "Zai jian",
-            tag: "greeting"
-        });
-        this.items.push({
-            english: "Pretty",
-            pinyin: "Pya liang",
-            tag: "description"
-        });
-        this.items.push({
-            english: "I'm hungry",
-            pinyin: "Wô èle",
-            tag: "phrase"
-        });
+        // Load the Items using the ItemService
+        this.loadItems();
     }
-    ItemsPage.prototype.openPage = function () {
-        console.log("open!!");
-    };
-    ItemsPage.prototype.switchTabs = function () {
-        this.navCtrl.parent.select(2);
+    // Load items into using ItemService
+    ItemsPage.prototype.loadItems = function () {
+        var _this = this;
+        this.itemService.load().then(function (data) {
+            _this.items = data;
+        });
     };
     ItemsPage.prototype.newItem = function () {
         // TODO: Utilize a Modal instead of the Alert to allow for inputting data
@@ -111428,8 +111408,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ItemService = (function () {
     function ItemService(http) {
         this.http = http;
-        console.log('Hello ItemService Provider');
-        this.load();
+        console.log('ItemService: constructor()');
     }
     // Load data
     ItemService.prototype.load = function () {

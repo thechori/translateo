@@ -14,9 +14,7 @@ export class ItemService {
   public items: any;
 
   constructor(public http: Http) {
-    console.log('Hello ItemService Provider');
-
-    this.load();
+    console.log('ItemService: constructor()');
   }
 
   // Load data
