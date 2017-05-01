@@ -19,21 +19,12 @@ export class ItemService {
 
   // Load data
   load() {
-    console.log("load()");
-
-    // if (this.items) {
-    //   // Already loaded data
-    //    return Promise.resolve(this.items);
-    // }
-
-    // Don't have the data yet
     return new Promise((resolve) => {
       console.log("load.promise");
       this.http.get('http://tiirbo-api.herokuapp.com/api/translateo/v1/items')
         // Call map on the response observable to get the parsed people object
         .map(res => res.json())
-        // Subscribe to the observable to get the parsed people object and attach it to the
-        // component
+        // Subscribe to the observable to get the parsed people object and attach it to the component
         .subscribe(items => {
           this.items = items;
           resolve(this.items);
@@ -45,8 +36,17 @@ export class ItemService {
   addItem(item) {
     console.log("addItem()");
     return new Promise((resolve, reject) => {
-      this.http.post('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/', item)
-      .subscribe(() => {
+      this.http.post('http://tiirbo-api.herokuapp.com/api/translateo/v1/items/', item)
+      .subscribe(
+        (value) => {
+          console.log(value)
+        }, (err) => {
+          if (err) {
+            console.log("reject");
+            console.log(err);
+            reject(err);
+          }
+        }, () => {
         console.log("addItem.http.subscribe()")
         resolve();
       })
@@ -55,13 +55,9 @@ export class ItemService {
 
   // Delete Item
   deleteItem(item) {
-    console.log("deleteItem()");
-    console.log(item);
-
     return new Promise((resolve) => {
       this.http.delete('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/'+item._id)
       .subscribe(function() {
-        console.log("done sending DELETE HTTP request")
         resolve();
       })
     })
