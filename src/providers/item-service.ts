@@ -53,9 +53,31 @@ export class ItemService {
     })
   }
 
+  // Edit Item
+  editItem(_id, item) {
+    console.log(item);
+    console.log("item_id: " + _id);
+    return new Promise((resolve, reject) => {
+      this.http.put('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/'+item._id, item)
+      .subscribe(
+        (value) => {
+          console.log(value)
+        }, (err) => {
+          if (err) {
+            console.log("reject");
+            console.log(err);
+            reject(err);
+          }
+        }, () => {
+          resolve();
+        }
+      )
+    })
+  }
+
   // Delete Item
   deleteItem(item) {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       this.http.delete('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/'+item._id)
       .subscribe(function() {
         resolve();

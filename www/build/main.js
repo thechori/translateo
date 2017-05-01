@@ -55708,10 +55708,45 @@ var ItemsPage = (function () {
         });
         alert.present();
     };
-    ItemsPage.prototype.editItem = function () {
-        // let editModal = this.modalCtrl.create(ModalContentPage);
-        // editModal.present();
+    ItemsPage.prototype.editItem = function (slidingItem, item) {
+        var _this = this;
         console.log("editItem()");
+        this.alertCtrl.create({
+            title: "Edit Item",
+            inputs: [
+                {
+                    name: 'english',
+                    placeholder: item.english
+                },
+                {
+                    name: 'pinyin',
+                    placeholder: item.pinyin
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel'
+                },
+                {
+                    text: 'Save',
+                    handler: function (data) {
+                        console.log("data:");
+                        console.log(data);
+                        slidingItem.close();
+                        _this.itemService.editItem(item._id, data).then(function (success) {
+                            _this.loadItems();
+                        }, function (error) {
+                            _this.alertCtrl.create({
+                                title: "Error",
+                                message: error
+                            });
+                        }).catch(function (err) {
+                            console.log(err);
+                        });
+                    }
+                }
+            ]
+        }).present();
     };
     ItemsPage.prototype.deleteItem = function (slidingItem, item) {
         var _this = this;
@@ -55743,7 +55778,7 @@ var ItemsPage = (function () {
 ItemsPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-items',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/'<!--\n  Generated template for the Items page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <!-- <ion-toolbar>\n\n  </ion-toolbar> -->\n\n  <ion-navbar>\n    <ion-title>Items</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <!-- TODO: Use ion-item-group for grouping things alphabetically! -->\n  <!-- TODO: Show Modal when editing an item, Popup alert when deleting -->\n\n  <!-- Search bar -->\n  <!-- <ion-searchbar></ion-searchbar> -->\n\n  <!-- List of Items -->\n  <ion-list>\n    <ion-item-sliding *ngFor="let i of items" #slidingItem>\n      <ion-item>\n        {{i.english}}\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button color="primary" (click)="editItem()">\n          <ion-icon name="create"></ion-icon>\n          Edit\n        </button>\n        <button ion-button color="danger" (click)="deleteItem(slidingItem, i)">\n          <ion-icon name="trash"></ion-icon>\n          Delete\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n\n  <!-- FAB (Floating Action Button) -->\n  <ion-fab right bottom>\n    <button ion-fab mini (click)="newItem()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/,
+        selector: 'page-items',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/'<!--\n  Generated template for the Items page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <!-- <ion-toolbar>\n\n  </ion-toolbar> -->\n\n  <ion-navbar>\n    <ion-title>Items</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <!-- TODO: Use ion-item-group for grouping things alphabetically! -->\n  <!-- TODO: Show Modal when editing an item, Popup alert when deleting -->\n\n  <!-- Search bar -->\n  <!-- <ion-searchbar></ion-searchbar> -->\n\n  <!-- List of Items -->\n  <ion-list>\n    <ion-item-sliding *ngFor="let i of items" #slidingItem>\n      <ion-item>\n        {{i.english}}\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button color="primary" (click)="editItem(slidingItem, i)">\n          <ion-icon name="create"></ion-icon>\n          Edit\n        </button>\n        <button ion-button color="danger" (click)="deleteItem(slidingItem, i)">\n          <ion-icon name="trash"></ion-icon>\n          Delete\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n\n  <!-- FAB (Floating Action Button) -->\n  <ion-fab right bottom>\n    <button ion-fab mini (click)="newItem()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/,
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__providers_item_service__["a" /* ItemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_item_service__["a" /* ItemService */]) === "function" && _e || Object])
 ], ItemsPage);
@@ -111487,10 +111522,30 @@ var ItemService = (function () {
             });
         });
     };
+    // Edit Item
+    ItemService.prototype.editItem = function (_id, item) {
+        var _this = this;
+        console.log(item);
+        console.log("item_id: " + _id);
+        return new Promise(function (resolve, reject) {
+            _this.http.put('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/' + item._id, item)
+                .subscribe(function (value) {
+                console.log(value);
+            }, function (err) {
+                if (err) {
+                    console.log("reject");
+                    console.log(err);
+                    reject(err);
+                }
+            }, function () {
+                resolve();
+            });
+        });
+    };
     // Delete Item
     ItemService.prototype.deleteItem = function (item) {
         var _this = this;
-        return new Promise(function (resolve) {
+        return new Promise(function (resolve, reject) {
             _this.http.delete('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/' + item._id)
                 .subscribe(function () {
                 resolve();

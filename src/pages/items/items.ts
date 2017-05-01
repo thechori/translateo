@@ -84,10 +84,45 @@ export class ItemsPage {
     alert.present();
   }
 
-  editItem() {
-    // let editModal = this.modalCtrl.create(ModalContentPage);
-    // editModal.present();
+  editItem(slidingItem: ItemSliding, item) {
     console.log("editItem()");
+    this.alertCtrl.create({
+      title: "Edit Item",
+      inputs: [
+        {
+          name: 'english',
+          placeholder: item.english
+        },
+        {
+          name: 'pinyin',
+          placeholder: item.pinyin
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel'
+        },
+        {
+          text: 'Save',
+          handler: (data) => {
+            console.log("data:");
+            console.log(data)
+
+            slidingItem.close();
+            this.itemService.editItem(item._id, data).then((success) => {
+              this.loadItems();
+            }, (error) => {
+              this.alertCtrl.create({
+                title: "Error",
+                message: error
+              })
+            }).catch((err) => {
+              console.log(err)
+            })
+          }
+        }
+      ]
+    }).present();
   }
 
   deleteItem(slidingItem: ItemSliding, item) {
