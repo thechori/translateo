@@ -8,7 +8,12 @@ import { Storage } from '@ionic/storage';
 })
 export class SettingsPage {
 
+  public defaultLanguage: string;
+
   constructor(public navCtrl: NavController, public storage: Storage) {
+
+    this.defaultLanguage = "english"
+
     storage.ready().then(() => {
       console.log("Storage ready");
 
