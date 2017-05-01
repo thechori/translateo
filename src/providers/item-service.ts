@@ -17,21 +17,6 @@ export class ItemService {
     console.log('ItemService: constructor()');
   }
 
-  public a = new Promise(function(resolve, reject) {
-    console.log("aaaaa");
-    setTimeout(resolve, 2000, "a done");
-  })
-
-  public b = new Promise(function(resolve, reject) {
-    console.log("bbbbb");
-    setTimeout(resolve, 5000, "b done");
-  })
-
-  public c = new Promise(function(resolve, reject) {
-    console.log("ccccc");
-    setTimeout(resolve, 1000, "c done");
-  })
-
   // Load data
   load() {
     console.log("load()");
@@ -56,6 +41,17 @@ export class ItemService {
     });
   }
 
+  // Add Item
+  addItem(item) {
+    console.log("addItem()");
+    return new Promise((resolve, reject) => {
+      this.http.post('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/', item)
+      .subscribe(() => {
+        console.log("addItem.http.subscribe()")
+      })
+    })
+  }
+
   // Delete Item
   deleteItem(item) {
     console.log("deleteItem()");
@@ -63,9 +59,42 @@ export class ItemService {
 
     return new Promise((resolve) => {
       this.http.delete('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/'+item._id)
-        .subscribe(function() {
-          console.log("done sending DELETE HTTP request")
-        })
+      .subscribe(function() {
+        console.log("done sending DELETE HTTP request")
+      })
+    })
+  }
+
+  calculateOne() {
+    return new Promise(function(resolve, reject) {
+      console.log("calculateOne");
+
+      setTimeout(function() {
+        console.log("calculateOne done");
+        resolve(1);
+      }, 1000)
+    })
+  }
+
+  calculateTen() {
+    return new Promise(function(resolve, reject) {
+      console.log("calculateTen");
+
+      setTimeout(function() {
+        console.log("calculateTen done");
+        resolve(2);
+      }, 3000)
+    })
+  }
+
+  calculateHundred() {
+    return new Promise(function(resolve, reject) {
+      console.log("calculateHundred");
+
+      setTimeout(function() {
+        console.log("calculateHundred done");
+        resolve(100);
+      }, 1000)
     })
   }
 }

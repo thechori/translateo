@@ -55685,7 +55685,6 @@ var ItemsPage = (function () {
         // this.greetings.hello();
     };
     ItemsPage.prototype.deleteItem = function (item) {
-        var _this = this;
         var alert = this.alertCtrl.create({
             title: "Delete Item",
             message: "Are you sure you want to delete \"" + item.english + "\"?",
@@ -55702,7 +55701,7 @@ var ItemsPage = (function () {
                         // this.itemService.deleteItem(item).then(function() {
                         //   return this.itemService.load();
                         // });
-                        _this.itemService.a.then(function () { _this.itemService.b; });
+                        // this.itemService.a.then(()=>{this.itemService.b})
                     }
                 }]
         });
@@ -55711,41 +55710,13 @@ var ItemsPage = (function () {
     ItemsPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad items');
     };
-    ItemsPage.prototype.calculateOne = function () {
-        return new Promise(function (resolve, reject) {
-            console.log("calculateOne");
-            setTimeout(function () {
-                console.log("calculateOne done");
-                resolve(1);
-            }, 4000);
-        });
-    };
-    ItemsPage.prototype.calculateTen = function () {
-        return new Promise(function (resolve, reject) {
-            console.log("calculateTen");
-            setTimeout(function () {
-                console.log("calculateTen done");
-                resolve(2);
-            }, 3000);
-        });
-    };
-    ItemsPage.prototype.calculateHundred = function () {
-        return new Promise(function (resolve, reject) {
-            console.log("calculateHundred");
-            setTimeout(function () {
-                console.log("calculateHundred done");
-                resolve(100);
-            }, 1000);
-        });
-    };
     ItemsPage.prototype.begin = function () {
         var _this = this;
         console.log("begin");
-        this.calculateTen()
-            .then(function () {
-            _this.calculateOne().then(function () {
-                _this.calculateHundred();
-            });
+        this.itemService.calculateTen().then(function () {
+            return _this.itemService.calculateOne();
+        }).then(function () {
+            _this.itemService.calculateHundred();
         });
     };
     return ItemsPage;
@@ -111462,18 +111433,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ItemService = (function () {
     function ItemService(http) {
         this.http = http;
-        this.a = new Promise(function (resolve, reject) {
-            console.log("aaaaa");
-            setTimeout(resolve, 2000, "a done");
-        });
-        this.b = new Promise(function (resolve, reject) {
-            console.log("bbbbb");
-            setTimeout(resolve, 5000, "b done");
-        });
-        this.c = new Promise(function (resolve, reject) {
-            console.log("ccccc");
-            setTimeout(resolve, 1000, "c done");
-        });
         console.log('ItemService: constructor()');
     }
     // Load data
@@ -111495,6 +111454,17 @@ var ItemService = (function () {
             });
         });
     };
+    // Add Item
+    ItemService.prototype.addItem = function (item) {
+        var _this = this;
+        console.log("addItem()");
+        return new Promise(function (resolve, reject) {
+            _this.http.post('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/', item)
+                .subscribe(function () {
+                console.log("addItem.http.subscribe()");
+            });
+        });
+    };
     // Delete Item
     ItemService.prototype.deleteItem = function (item) {
         var _this = this;
@@ -111507,13 +111477,41 @@ var ItemService = (function () {
             });
         });
     };
+    ItemService.prototype.calculateOne = function () {
+        return new Promise(function (resolve, reject) {
+            console.log("calculateOne");
+            setTimeout(function () {
+                console.log("calculateOne done");
+                resolve(1);
+            }, 1000);
+        });
+    };
+    ItemService.prototype.calculateTen = function () {
+        return new Promise(function (resolve, reject) {
+            console.log("calculateTen");
+            setTimeout(function () {
+                console.log("calculateTen done");
+                resolve(2);
+            }, 3000);
+        });
+    };
+    ItemService.prototype.calculateHundred = function () {
+        return new Promise(function (resolve, reject) {
+            console.log("calculateHundred");
+            setTimeout(function () {
+                console.log("calculateHundred done");
+                resolve(100);
+            }, 1000);
+        });
+    };
     return ItemService;
 }());
 ItemService = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["c" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
 ], ItemService);
 
+var _a;
 //# sourceMappingURL=item-service.js.map
 
 /***/ }),

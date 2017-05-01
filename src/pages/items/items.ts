@@ -81,7 +81,7 @@ export class ItemsPage {
           //   return this.itemService.load();
           // });
 
-          this.itemService.a.then(()=>{this.itemService.b})
+          // this.itemService.a.then(()=>{this.itemService.b})
         }
       }]
     });
@@ -93,46 +93,14 @@ export class ItemsPage {
     console.log('ionViewDidLoad items');
   }
 
-  calculateOne() {
-    return new Promise(function(resolve, reject) {
-      console.log("calculateOne");
-
-      setTimeout(function() {
-        console.log("calculateOne done");
-        resolve(1);
-      }, 4000)
-    })
-  }
-
-  calculateTen() {
-    return new Promise(function(resolve, reject) {
-      console.log("calculateTen");
-
-      setTimeout(function() {
-        console.log("calculateTen done");
-        resolve(2);
-      }, 3000)
-    })
-  }
-
-  calculateHundred() {
-    return new Promise(function(resolve, reject) {
-      console.log("calculateHundred");
-
-      setTimeout(function() {
-        console.log("calculateHundred done");
-        resolve(100);
-      }, 1000)
-    })
-  }
-
   begin() {
     console.log("begin");
-    this.calculateTen()
-    .then(() => {
-      this.calculateOne().then(()=>{
-        this.calculateHundred();
-      })
+
+    this.itemService.calculateTen().then(() => {
+      return this.itemService.calculateOne()
+    }).then(()=>{
+      this.itemService.calculateHundred();
     })
+
   }
 }
