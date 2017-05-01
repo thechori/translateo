@@ -39,6 +39,7 @@ export class ItemsPage {
 
   // Load items into using ItemService
   loadItems() {
+    console.log("loadItems");
     this.itemService.load().then(data => {
       this.items = data;
     })
@@ -62,11 +63,27 @@ export class ItemsPage {
     // this.greetings.hello();
   }
 
-  deleteItem() {
+  deleteItem(item) {
     let alert =  this.alertCtrl.create({
       title: "Delete Item",
-      subTitle: "Are you sure you want to delete this item?",
-      buttons: ['Delete', 'Cancel']
+      message: "Are you sure you want to delete \""+item.english+"\"?",
+      buttons: [{
+        text: 'Cancel',
+        handler: data => {
+          console.log("Cancelled Item delete");
+          console.log(item);
+        }
+      }, {
+        text: 'Delete',
+        handler: data => {
+          console.log("DELETE!")
+          // this.itemService.deleteItem(item).then(function() {
+          //   return this.itemService.load();
+          // });
+
+          this.itemService.a.then(()=>{this.itemService.b})
+        }
+      }]
     });
 
     alert.present();
@@ -74,5 +91,48 @@ export class ItemsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad items');
+  }
+
+  calculateOne() {
+    return new Promise(function(resolve, reject) {
+      console.log("calculateOne");
+
+      setTimeout(function() {
+        console.log("calculateOne done");
+        resolve(1);
+      }, 4000)
+    })
+  }
+
+  calculateTen() {
+    return new Promise(function(resolve, reject) {
+      console.log("calculateTen");
+
+      setTimeout(function() {
+        console.log("calculateTen done");
+        resolve(2);
+      }, 3000)
+    })
+  }
+
+  calculateHundred() {
+    return new Promise(function(resolve, reject) {
+      console.log("calculateHundred");
+
+      setTimeout(function() {
+        console.log("calculateHundred done");
+        resolve(100);
+      }, 1000)
+    })
+  }
+
+  begin() {
+    console.log("begin");
+    this.calculateTen()
+    .then(() => {
+      this.calculateOne().then(()=>{
+        this.calculateHundred();
+      })
+    })
   }
 }
