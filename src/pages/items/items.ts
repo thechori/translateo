@@ -46,8 +46,7 @@ export class ItemsPage {
   }
 
   newItem() {
-    // TODO: Utilize a Modal instead of the Alert to allow for inputting data
-    let alert =  this.alertCtrl.create({
+    let alert = this.alertCtrl.create({
       title: "New Item",
       // subTitle: "Enter the details for the item you'd like to create.",
       inputs: [
@@ -62,18 +61,20 @@ export class ItemsPage {
       ],
       buttons: [
         {
-          text: 'Cancel',
-          handler: () => {
-            console.log("cancel");
-          }
+          text: 'Cancel'
         },
         {
           text: 'Create',
           handler: (data) => {
             console.log("creating new Item");
             console.log(data);
-            this.itemService.addItem(data).then(() => {
+            this.itemService.addItem(data).then((success) => {
               this.loadItems();
+            }, (error) => {
+              this.alertCtrl.create({
+                title: "Error",
+                message: error
+              }).present();
             })
           }
         }

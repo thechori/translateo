@@ -55672,7 +55672,6 @@ var ItemsPage = (function () {
     };
     ItemsPage.prototype.newItem = function () {
         var _this = this;
-        // TODO: Utilize a Modal instead of the Alert to allow for inputting data
         var alert = this.alertCtrl.create({
             title: "New Item",
             // subTitle: "Enter the details for the item you'd like to create.",
@@ -55688,18 +55687,20 @@ var ItemsPage = (function () {
             ],
             buttons: [
                 {
-                    text: 'Cancel',
-                    handler: function () {
-                        console.log("cancel");
-                    }
+                    text: 'Cancel'
                 },
                 {
                     text: 'Create',
                     handler: function (data) {
                         console.log("creating new Item");
                         console.log(data);
-                        _this.itemService.addItem(data).then(function () {
+                        _this.itemService.addItem(data).then(function (success) {
                             _this.loadItems();
+                        }, function (error) {
+                            _this.alertCtrl.create({
+                                title: "Error",
+                                message: error
+                            }).present();
                         });
                     }
                 }
@@ -111472,7 +111473,15 @@ var ItemService = (function () {
         console.log("addItem()");
         return new Promise(function (resolve, reject) {
             _this.http.post('http://tiirbo-api.herokuapp.com/api/translateo/v1/items/', item)
-                .subscribe(function () {
+                .subscribe(function (value) {
+                console.log(value);
+            }, function (err) {
+                if (err) {
+                    console.log("reject");
+                    console.log(err);
+                    reject(err);
+                }
+            }, function () {
                 console.log("addItem.http.subscribe()");
                 resolve();
             });

@@ -37,7 +37,16 @@ export class ItemService {
     console.log("addItem()");
     return new Promise((resolve, reject) => {
       this.http.post('http://tiirbo-api.herokuapp.com/api/translateo/v1/items/', item)
-      .subscribe(() => {
+      .subscribe(
+        (value) => {
+          console.log(value)
+        }, (err) => {
+          if (err) {
+            console.log("reject");
+            console.log(err);
+            reject(err);
+          }
+        }, () => {
         console.log("addItem.http.subscribe()")
         resolve();
       })
