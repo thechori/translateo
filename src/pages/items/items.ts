@@ -40,7 +40,6 @@ export class ItemsPage {
 
   // Load items into using ItemService
   loadItems() {
-    console.log("loadItems");
     this.itemService.load().then(data => {
       this.items = data;
     })
@@ -61,7 +60,6 @@ export class ItemsPage {
     // let editModal = this.modalCtrl.create(ModalContentPage);
     // editModal.present();
     console.log("editItem()");
-    // this.greetings.hello();
   }
 
   deleteItem(slidingItem: ItemSliding, item) {
@@ -71,18 +69,14 @@ export class ItemsPage {
       buttons: [{
         text: 'Cancel',
         handler: data => {
-          console.log("Cancelled Item delete");
-          console.log(item);
+          slidingItem.close();
         }
       }, {
         text: 'Delete',
         handler: data => {
           slidingItem.close();
-          console.log("DELETE!")
-          console.log(item);
-          console.log(data);
           this.itemService.deleteItem(item).then(() => {
-            return this.itemService.load();
+            this.loadItems();
           })
         }
       }]

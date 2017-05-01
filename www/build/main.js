@@ -55666,7 +55666,6 @@ var ItemsPage = (function () {
     // Load items into using ItemService
     ItemsPage.prototype.loadItems = function () {
         var _this = this;
-        console.log("loadItems");
         this.itemService.load().then(function (data) {
             _this.items = data;
         });
@@ -55684,7 +55683,6 @@ var ItemsPage = (function () {
         // let editModal = this.modalCtrl.create(ModalContentPage);
         // editModal.present();
         console.log("editItem()");
-        // this.greetings.hello();
     };
     ItemsPage.prototype.deleteItem = function (slidingItem, item) {
         var _this = this;
@@ -55694,18 +55692,14 @@ var ItemsPage = (function () {
             buttons: [{
                     text: 'Cancel',
                     handler: function (data) {
-                        console.log("Cancelled Item delete");
-                        console.log(item);
+                        slidingItem.close();
                     }
                 }, {
                     text: 'Delete',
                     handler: function (data) {
                         slidingItem.close();
-                        console.log("DELETE!");
-                        console.log(item);
-                        console.log(data);
                         _this.itemService.deleteItem(item).then(function () {
-                            return _this.itemService.load();
+                            _this.loadItems();
                         });
                     }
                 }]
@@ -111441,11 +111435,11 @@ var ItemService = (function () {
         // }
         // Don't have the data yet
         return new Promise(function (resolve) {
+            console.log("load.promise");
             _this.http.get('http://tiirbo-api.herokuapp.com/api/translateo/v1/items')
                 .map(function (res) { return res.json(); })
                 .subscribe(function (items) {
                 _this.items = items;
-                console.log(_this.items);
                 resolve(_this.items);
             });
         });

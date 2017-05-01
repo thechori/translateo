@@ -28,6 +28,7 @@ export class ItemService {
 
     // Don't have the data yet
     return new Promise((resolve) => {
+      console.log("load.promise");
       this.http.get('http://tiirbo-api.herokuapp.com/api/translateo/v1/items')
         // Call map on the response observable to get the parsed people object
         .map(res => res.json())
@@ -35,7 +36,6 @@ export class ItemService {
         // component
         .subscribe(items => {
           this.items = items;
-          console.log(this.items);
           resolve(this.items);
         });
     });
