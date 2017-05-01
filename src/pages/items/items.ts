@@ -5,6 +5,7 @@ import { ModalController } from 'ionic-angular';
 import { ViewController } from 'ionic-angular';
 // import { ModalContentPage } from '../../pages/items/editModal';
 import { ItemService } from '../../providers/item-service';
+import { ItemSliding } from 'ionic-angular';
 
 // import { Greetings } from '../../pages/items/greetings';
 
@@ -29,7 +30,7 @@ export class ItemsPage {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
-    public itemService: ItemService,
+    public itemService: ItemService
     // public editModal: ModalContentPage
   ) {
 
@@ -63,7 +64,7 @@ export class ItemsPage {
     // this.greetings.hello();
   }
 
-  deleteItem(item) {
+  deleteItem(slidingItem: ItemSliding, item) {
     let alert =  this.alertCtrl.create({
       title: "Delete Item",
       message: "Are you sure you want to delete \""+item.english+"\"?",
@@ -76,12 +77,13 @@ export class ItemsPage {
       }, {
         text: 'Delete',
         handler: data => {
+          slidingItem.close();
           console.log("DELETE!")
-          // this.itemService.deleteItem(item).then(function() {
-          //   return this.itemService.load();
-          // });
-
-          // this.itemService.a.then(()=>{this.itemService.b})
+          console.log(item);
+          console.log(data);
+          this.itemService.deleteItem(item).then(() => {
+            return this.itemService.load();
+          })
         }
       }]
     });
@@ -91,16 +93,5 @@ export class ItemsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad items');
-  }
-
-  begin() {
-    console.log("begin");
-
-    this.itemService.calculateTen().then(() => {
-      return this.itemService.calculateOne()
-    }).then(()=>{
-      this.itemService.calculateHundred();
-    })
-
   }
 }

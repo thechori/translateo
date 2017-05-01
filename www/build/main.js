@@ -55652,7 +55652,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ItemsPage = (function () {
     function ItemsPage(
         // public greetings: Greetings,
-        navCtrl, navParams, alertCtrl, modalCtrl, itemService) {
+        navCtrl, navParams, alertCtrl, modalCtrl, itemService
+        // public editModal: ModalContentPage
+    ) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.alertCtrl = alertCtrl;
@@ -55684,7 +55686,8 @@ var ItemsPage = (function () {
         console.log("editItem()");
         // this.greetings.hello();
     };
-    ItemsPage.prototype.deleteItem = function (item) {
+    ItemsPage.prototype.deleteItem = function (slidingItem, item) {
+        var _this = this;
         var alert = this.alertCtrl.create({
             title: "Delete Item",
             message: "Are you sure you want to delete \"" + item.english + "\"?",
@@ -55697,11 +55700,13 @@ var ItemsPage = (function () {
                 }, {
                     text: 'Delete',
                     handler: function (data) {
+                        slidingItem.close();
                         console.log("DELETE!");
-                        // this.itemService.deleteItem(item).then(function() {
-                        //   return this.itemService.load();
-                        // });
-                        // this.itemService.a.then(()=>{this.itemService.b})
+                        console.log(item);
+                        console.log(data);
+                        _this.itemService.deleteItem(item).then(function () {
+                            return _this.itemService.load();
+                        });
                     }
                 }]
         });
@@ -55710,21 +55715,12 @@ var ItemsPage = (function () {
     ItemsPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad items');
     };
-    ItemsPage.prototype.begin = function () {
-        var _this = this;
-        console.log("begin");
-        this.itemService.calculateTen().then(function () {
-            return _this.itemService.calculateOne();
-        }).then(function () {
-            _this.itemService.calculateHundred();
-        });
-    };
     return ItemsPage;
 }());
 ItemsPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])(),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_5" /* Component */])({
-        selector: 'page-items',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/'<!--\n  Generated template for the Items page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <!-- <ion-toolbar>\n\n  </ion-toolbar> -->\n\n  <ion-navbar>\n    <ion-title>Items</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <!-- TODO: Use ion-item-group for grouping things alphabetically! -->\n  <!-- TODO: Show Modal when editing an item, Popup alert when deleting -->\n\n  <!-- Search bar -->\n  <!-- <ion-searchbar></ion-searchbar> -->\n\n  <!-- List of Items -->\n  <ion-list>\n    <ion-item-sliding *ngFor="let i of items">\n      <ion-item>\n        {{i.english}}\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button color="primary" (click)="editItem()">\n          <ion-icon name="create"></ion-icon>\n          Edit\n        </button>\n        <button ion-button color="danger" (click)="begin(i)">\n          <ion-icon name="trash"></ion-icon>\n          Delete\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n\n  <!-- FAB (Floating Action Button) -->\n  <ion-fab right bottom>\n    <button ion-fab mini (click)="newItem()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/,
+        selector: 'page-items',template:/*ion-inline-start:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/'<!--\n  Generated template for the Items page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <!-- <ion-toolbar>\n\n  </ion-toolbar> -->\n\n  <ion-navbar>\n    <ion-title>Items</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <!-- TODO: Use ion-item-group for grouping things alphabetically! -->\n  <!-- TODO: Show Modal when editing an item, Popup alert when deleting -->\n\n  <!-- Search bar -->\n  <!-- <ion-searchbar></ion-searchbar> -->\n\n  <!-- List of Items -->\n  <ion-list>\n    <ion-item-sliding *ngFor="let i of items" #slidingItem>\n      <ion-item>\n        {{i.english}}\n      </ion-item>\n      <ion-item-options side="right">\n        <button ion-button color="primary" (click)="editItem()">\n          <ion-icon name="create"></ion-icon>\n          Edit\n        </button>\n        <button ion-button color="danger" (click)="deleteItem(slidingItem, i)">\n          <ion-icon name="trash"></ion-icon>\n          Delete\n        </button>\n      </ion-item-options>\n    </ion-item-sliding>\n  </ion-list>\n\n  <!-- FAB (Floating Action Button) -->\n  <ion-fab right bottom>\n    <button ion-fab mini (click)="newItem()"><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n</ion-content>\n'/*ion-inline-end:"/Users/rhteodor/Code/translateo/src/pages/items/items.html"*/,
     }),
     __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* ModalController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__providers_item_service__["a" /* ItemService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_item_service__["a" /* ItemService */]) === "function" && _e || Object])
 ], ItemsPage);
@@ -111443,7 +111439,7 @@ var ItemService = (function () {
         //   // Already loaded data
         //    return Promise.resolve(this.items);
         // }
-        // Don't have the data yes
+        // Don't have the data yet
         return new Promise(function (resolve) {
             _this.http.get('http://tiirbo-api.herokuapp.com/api/translateo/v1/items')
                 .map(function (res) { return res.json(); })
@@ -111462,6 +111458,7 @@ var ItemService = (function () {
             _this.http.post('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/', item)
                 .subscribe(function () {
                 console.log("addItem.http.subscribe()");
+                resolve();
             });
         });
     };
@@ -111474,34 +111471,8 @@ var ItemService = (function () {
             _this.http.delete('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/' + item._id)
                 .subscribe(function () {
                 console.log("done sending DELETE HTTP request");
+                resolve();
             });
-        });
-    };
-    ItemService.prototype.calculateOne = function () {
-        return new Promise(function (resolve, reject) {
-            console.log("calculateOne");
-            setTimeout(function () {
-                console.log("calculateOne done");
-                resolve(1);
-            }, 1000);
-        });
-    };
-    ItemService.prototype.calculateTen = function () {
-        return new Promise(function (resolve, reject) {
-            console.log("calculateTen");
-            setTimeout(function () {
-                console.log("calculateTen done");
-                resolve(2);
-            }, 3000);
-        });
-    };
-    ItemService.prototype.calculateHundred = function () {
-        return new Promise(function (resolve, reject) {
-            console.log("calculateHundred");
-            setTimeout(function () {
-                console.log("calculateHundred done");
-                resolve(100);
-            }, 1000);
         });
     };
     return ItemService;

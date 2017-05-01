@@ -26,7 +26,7 @@ export class ItemService {
     //    return Promise.resolve(this.items);
     // }
 
-    // Don't have the data yes
+    // Don't have the data yet
     return new Promise((resolve) => {
       this.http.get('http://tiirbo-api.herokuapp.com/api/translateo/v1/items')
         // Call map on the response observable to get the parsed people object
@@ -48,6 +48,7 @@ export class ItemService {
       this.http.post('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/', item)
       .subscribe(() => {
         console.log("addItem.http.subscribe()")
+        resolve();
       })
     })
   }
@@ -61,40 +62,9 @@ export class ItemService {
       this.http.delete('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/'+item._id)
       .subscribe(function() {
         console.log("done sending DELETE HTTP request")
+        resolve();
       })
     })
   }
 
-  calculateOne() {
-    return new Promise(function(resolve, reject) {
-      console.log("calculateOne");
-
-      setTimeout(function() {
-        console.log("calculateOne done");
-        resolve(1);
-      }, 1000)
-    })
-  }
-
-  calculateTen() {
-    return new Promise(function(resolve, reject) {
-      console.log("calculateTen");
-
-      setTimeout(function() {
-        console.log("calculateTen done");
-        resolve(2);
-      }, 3000)
-    })
-  }
-
-  calculateHundred() {
-    return new Promise(function(resolve, reject) {
-      console.log("calculateHundred");
-
-      setTimeout(function() {
-        console.log("calculateHundred done");
-        resolve(100);
-      }, 1000)
-    })
-  }
 }
