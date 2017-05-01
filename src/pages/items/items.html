@@ -26,7 +26,7 @@
 
   <!-- List of Items -->
   <ion-list>
-    <ion-item-sliding *ngFor="let i of items">
+    <ion-item-sliding *ngFor="let i of items" #slidingItem>
       <ion-item>
         {{i.english}}
       </ion-item>
@@ -35,7 +35,7 @@
           <ion-icon name="create"></ion-icon>
           Edit
         </button>
-        <button ion-button color="danger" (click)="deleteItem()">
+        <button ion-button color="danger" (click)="deleteItem(slidingItem, i)">
           <ion-icon name="trash"></ion-icon>
           Delete
         </button>
