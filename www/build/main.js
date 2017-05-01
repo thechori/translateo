@@ -55673,9 +55673,32 @@ var ItemsPage = (function () {
     ItemsPage.prototype.newItem = function () {
         // TODO: Utilize a Modal instead of the Alert to allow for inputting data
         var alert = this.alertCtrl.create({
-            title: "Create New Item",
-            subTitle: "Let's create a new Item, shall we??",
-            buttons: ['Create']
+            title: "New Item",
+            // subTitle: "Enter the details for the item you'd like to create.",
+            inputs: [
+                {
+                    name: 'english',
+                    placeholder: 'English'
+                },
+                {
+                    name: 'pinyin',
+                    placeholder: 'Pinyin'
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    handler: function () {
+                        console.log("cancel");
+                    }
+                },
+                {
+                    text: 'Create',
+                    handler: function () {
+                        console.log("creating new Item");
+                    }
+                }
+            ]
         });
         alert.present();
     };
