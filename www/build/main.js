@@ -55671,6 +55671,7 @@ var ItemsPage = (function () {
         });
     };
     ItemsPage.prototype.newItem = function () {
+        var _this = this;
         // TODO: Utilize a Modal instead of the Alert to allow for inputting data
         var alert = this.alertCtrl.create({
             title: "New Item",
@@ -55694,8 +55695,12 @@ var ItemsPage = (function () {
                 },
                 {
                     text: 'Create',
-                    handler: function () {
+                    handler: function (data) {
                         console.log("creating new Item");
+                        console.log(data);
+                        _this.itemService.addItem(data).then(function () {
+                            _this.loadItems();
+                        });
                     }
                 }
             ]
@@ -111451,12 +111456,6 @@ var ItemService = (function () {
     // Load data
     ItemService.prototype.load = function () {
         var _this = this;
-        console.log("load()");
-        // if (this.items) {
-        //   // Already loaded data
-        //    return Promise.resolve(this.items);
-        // }
-        // Don't have the data yet
         return new Promise(function (resolve) {
             console.log("load.promise");
             _this.http.get('http://tiirbo-api.herokuapp.com/api/translateo/v1/items')
@@ -111472,7 +111471,7 @@ var ItemService = (function () {
         var _this = this;
         console.log("addItem()");
         return new Promise(function (resolve, reject) {
-            _this.http.post('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/', item)
+            _this.http.post('http://tiirbo-api.herokuapp.com/api/translateo/v1/items/', item)
                 .subscribe(function () {
                 console.log("addItem.http.subscribe()");
                 resolve();
@@ -111482,12 +111481,9 @@ var ItemService = (function () {
     // Delete Item
     ItemService.prototype.deleteItem = function (item) {
         var _this = this;
-        console.log("deleteItem()");
-        console.log(item);
         return new Promise(function (resolve) {
             _this.http.delete('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/' + item._id)
                 .subscribe(function () {
-                console.log("done sending DELETE HTTP request");
                 resolve();
             });
         });

@@ -69,8 +69,12 @@ export class ItemsPage {
         },
         {
           text: 'Create',
-          handler: () => {
+          handler: (data) => {
             console.log("creating new Item");
+            console.log(data);
+            this.itemService.addItem(data).then(() => {
+              this.loadItems();
+            })
           }
         }
       ]
