@@ -37,6 +37,20 @@ export class ItemsPage {
     this.loadItems();
   }
 
+  // Flip Item over
+  alertPinyin(item) {
+    this.alertCtrl.create({
+      title: item.pinyin,
+      // message: item.pinyin,
+      buttons: [
+        {
+          text: 'Close'
+        }
+      ]
+    }).present()
+  }
+
+
   // Load items into using ItemService
   loadItems() {
     this.itemService.load().then(data => {
