@@ -18,8 +18,11 @@ import { GreetingsQuiz } from '../pages/quiz/quizzes/greetings';
 // Services
 import { ItemService } from '../providers/item-service';
 
+
+// Plugins
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Deeplinks } from '@ionic-native/deeplinks';
 
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
@@ -58,7 +61,8 @@ import { IonicStorageModule } from '@ionic/storage';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ItemService
+    ItemService,
+    Deeplinks
   ]
 })
 export class AppModule {}
