@@ -54,7 +54,7 @@ export class ItemService {
   // Edit Item
   editItem(_id, item) {
     return new Promise((resolve, reject) => {
-      this.http.put('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/'+item._id, item)
+      this.http.put('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/'+_id, item)
       .subscribe(
         (value) => {
           console.log(value)
