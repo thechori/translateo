@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { ModalController } from 'ionic-angular';
-import { ViewController } from 'ionic-angular';
 // import { ModalContentPage } from '../../pages/items/editModal';
 import { ItemService } from '../../providers/item-service';
 import { ItemSliding } from 'ionic-angular';

@@ -20,7 +20,6 @@ export class ItemService {
   // Load data
   load() {
     return new Promise((resolve) => {
-      console.log("load.promise");
       this.http.get('http://tiirbo-api.herokuapp.com/api/translateo/v1/items')
         // Call map on the response observable to get the parsed people object
         .map(res => res.json())
@@ -34,7 +33,6 @@ export class ItemService {
 
   // Add Item
   addItem(item) {
-    console.log("addItem()");
     return new Promise((resolve, reject) => {
       this.http.post('http://tiirbo-api.herokuapp.com/api/translateo/v1/items/', item)
       .subscribe(
@@ -55,8 +53,6 @@ export class ItemService {
 
   // Edit Item
   editItem(_id, item) {
-    console.log(item);
-    console.log("item_id: " + _id);
     return new Promise((resolve, reject) => {
       this.http.put('http://tiirbo-api.herokuapp.com/api/translateo/v1/item/'+item._id, item)
       .subscribe(

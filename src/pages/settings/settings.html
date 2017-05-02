@@ -10,14 +10,14 @@
   <ion-list>
     <ion-list-header>Basic Information</ion-list-header>
     <ion-item>
-      <ion-input type="text" placeholder="First name"></ion-input>
+      <ion-input type="text" placeholder="First name" [(ngModel)]="settings.firstName"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input type="text" placeholder="Last name"></ion-input>
+      <ion-input type="text" placeholder="Last name" [(ngModel)]="settings.lastName"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Gender</ion-label>
-      <ion-select>
+      <ion-select [(ngModel)]="settings.gender">
         <ion-option value="male">Male</ion-option>
         <ion-option value="female">Female</ion-option>
       </ion-select>
@@ -27,7 +27,15 @@
     <ion-list-header>Preferences</ion-list-header>
     <ion-item>
       <ion-label>Pro Mode</ion-label>
-      <ion-toggle checked="false"></ion-toggle>
+      <ion-toggle checked="false" [(ngModel)]="settings.proMode"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Default Language</ion-label>
+      <ion-select [(ngModel)]="settings.defaultLanguage">
+        <ion-option value="english">English</ion-option>
+        <ion-option value="pinyin">Pinyin</ion-option>
+      </ion-select>
     </ion-item>
   </ion-list>
+  <button ion-button block (click)="save()">Save</button>
 </ion-content>
