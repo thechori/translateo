@@ -14,5 +14,23 @@
 
 
 <ion-content padding>
-  <p>Welcome to the Quiz!</p>
+  <p>Select a Quiz!</p>
+
+  <ion-list>
+    <ion-item>
+      <ion-icon name="stats" item-left></ion-icon>
+      Numbers
+      <button ion-button item-right (click)="startNumbersQuiz()">Start</button>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="chatbubbles" item-left></ion-icon>
+      Greetings
+      <button ion-button item-right (click)="startGreetingsQuiz()">Start</button>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="eye" item-left></ion-icon>
+      Descriptions
+      <button ion-button item-right (click)="startDescriptionsQuiz()">Start</button>
+    </ion-item>
+  </ion-list>
 </ion-content>
