@@ -10,6 +10,7 @@ import { HomePage } from '../pages/home/home';
 import { ItemsPage } from '../pages/items/items';
 import { SettingsPage } from '../pages/settings/settings';
 import { Quiz } from '../pages/quiz/quiz';
+import { TheQuiz } from '../pages/quiz/thequiz';
 
 // Services
 import { ItemService } from '../providers/item-service';
@@ -27,7 +28,8 @@ import { IonicStorageModule } from '@ionic/storage';
     HomePage,
     TabsPage,
     ItemsPage,
-    Quiz
+    Quiz,
+    TheQuiz
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { IonicStorageModule } from '@ionic/storage';
     HomePage,
     TabsPage,
     ItemsPage,
-    Quiz
+    Quiz,
+    TheQuiz
   ],
   providers: [
     StatusBar,
