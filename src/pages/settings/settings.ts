@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-settings',
@@ -10,7 +11,7 @@ export class SettingsPage {
 
   public settings: any
 
-  constructor(public navCtrl: NavController, public storage: Storage) {
+  constructor(public navCtrl: NavController, public storage: Storage, public alertCtrl: AlertController) {
 
     // Defaults
     this.settings = {
@@ -44,8 +45,15 @@ export class SettingsPage {
   // Save data to local storage
   save() {
     this.storage.set("settings", this.settings).then((data) => {
-      console.log("settings saved!");
-      console.log(data);
+      this.alertCtrl.create({
+        title: 'Settings',
+        message: 'Your settings have been successfully saved.',
+        buttons: [
+          {
+            text: 'Close'
+          }
+        ]
+      }).present()
     })
   }
 
