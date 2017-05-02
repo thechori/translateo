@@ -5,10 +5,13 @@ import { MyApp } from './app.component';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
+// Pages
 import { HomePage } from '../pages/home/home';
 import { ItemsPage } from '../pages/items/items';
 import { SettingsPage } from '../pages/settings/settings';
-// import { Greetings } from '../pages/items/greetings';
+import { Quiz } from '../pages/quiz/quiz';
+
+// Services
 import { ItemService } from '../providers/item-service';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,7 +26,8 @@ import { IonicStorageModule } from '@ionic/storage';
     SettingsPage,
     HomePage,
     TabsPage,
-    ItemsPage
+    ItemsPage,
+    Quiz
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import { IonicStorageModule } from '@ionic/storage';
     SettingsPage,
     HomePage,
     TabsPage,
-    ItemsPage
+    ItemsPage,
+    Quiz
   ],
   providers: [
     StatusBar,
