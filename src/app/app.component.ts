@@ -29,9 +29,11 @@ export class MyApp {
         '/quiz/greetings': GreetingsQuiz,
         '/quiz/descriptions': DescriptionsQuiz
       }).subscribe((match) => {
-        console.log('Successfully matched route', match);
+        console.log('Successfully matched route');
+        console.log(match);
       }, (nomatch) => {
-        console.error('Got a deeplink that didn\'t match', nomatch)
+        console.error('Got a deeplink that didn\'t match')
+        console.log(nomatch)
       });
     });
   }
