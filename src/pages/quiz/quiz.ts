@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { TheQuiz } from './thequiz';
+import { NumbersQuiz } from './quizzes/numbers';
+import { DescriptionsQuiz } from './quizzes/descriptions';
+import { GreetingsQuiz } from './quizzes/greetings';
 
 /**
  * Generated class for the Quiz page.
@@ -16,24 +18,28 @@ import { TheQuiz } from './thequiz';
 })
 export class Quiz {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    // public numbersQuiz: NumbersQuiz
+  ) {
 
   }
 
-  ionViewDidLoad(theQuiz: TheQuiz) {
+  ionViewDidLoad() {
     console.log('ionViewDidLoad Quiz');
   }
 
   startNumbersQuiz() {
-    this.navCtrl.push(TheQuiz);
+    this.navCtrl.push(NumbersQuiz);
   }
 
   startGreetingsQuiz() {
-    
+    this.navCtrl.push(GreetingsQuiz);
   }
 
   startDescriptionsQuiz() {
-
+    this.navCtrl.push(DescriptionsQuiz);
   }
 
 }
