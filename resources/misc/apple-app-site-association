@@ -4,7 +4,7 @@
         "details": [
             {
                 "appID": "WFVBWY22RM.com.tiirbo.translateo",
-                "paths": [ "/quiz/numbers", "/quiz/descriptions", "/quiz/greetings"]
+                "paths": ["*"]
             }
         ]
     }
