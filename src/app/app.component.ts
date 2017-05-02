@@ -25,6 +25,7 @@ export class MyApp {
 
       // Initialize deep linking
       deeplinks.route({
+        '/descriptions': DescriptionsQuiz,
         '/quiz/numbers': NumbersQuiz,
         '/quiz/greetings': GreetingsQuiz,
         '/quiz/descriptions': DescriptionsQuiz
