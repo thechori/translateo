@@ -33,12 +33,18 @@ export class MyApp {
       // Deeplinking (Ionic 2)
       deeplinks.routeWithNavController(this.nav, {
         '/descriptions': DescriptionsQuiz,
-        '/quiz/numbers': NumbersQuiz,
+        '/greetings': GreetingsQuiz,
+        '/numbers': NumbersQuiz,
+
+        '/quiz/descriptions': DescriptionsQuiz,
         '/quiz/greetings': GreetingsQuiz,
-        '/quiz/descriptions': DescriptionsQuiz
+        '/quiz/numbers': DescriptionsQuiz,
+
       }).subscribe((match) => {
         console.log("MATCH FOUND!");
         console.log(match);
+        console.log("******");
+        console.log('match found', match);
       }, (nomatch) => {
         console.log("no match found..")
         console.warn(nomatch);
