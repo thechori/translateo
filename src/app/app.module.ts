@@ -5,14 +5,24 @@ import { MyApp } from './app.component';
 
 import { TabsPage } from '../pages/tabs/tabs';
 
+// Pages
 import { HomePage } from '../pages/home/home';
 import { ItemsPage } from '../pages/items/items';
 import { SettingsPage } from '../pages/settings/settings';
-// import { Greetings } from '../pages/items/greetings';
+import { Quiz } from '../pages/quiz/quiz';
+import { NumbersQuiz } from '../pages/quiz/quizzes/numbers';
+import { DescriptionsQuiz } from '../pages/quiz/quizzes/descriptions';
+import { GreetingsQuiz } from '../pages/quiz/quizzes/greetings';
+
+
+// Services
 import { ItemService } from '../providers/item-service';
 
+
+// Plugins
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Deeplinks } from '@ionic-native/deeplinks';
 
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
@@ -23,7 +33,11 @@ import { IonicStorageModule } from '@ionic/storage';
     SettingsPage,
     HomePage,
     TabsPage,
-    ItemsPage
+    ItemsPage,
+    Quiz,
+    NumbersQuiz,
+    DescriptionsQuiz,
+    GreetingsQuiz
   ],
   imports: [
     BrowserModule,
@@ -37,13 +51,18 @@ import { IonicStorageModule } from '@ionic/storage';
     SettingsPage,
     HomePage,
     TabsPage,
-    ItemsPage
+    ItemsPage,
+    Quiz,
+    NumbersQuiz,
+    DescriptionsQuiz,
+    GreetingsQuiz
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ItemService
+    ItemService,
+    Deeplinks
   ]
 })
 export class AppModule {}
