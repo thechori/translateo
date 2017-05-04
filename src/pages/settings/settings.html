@@ -18,8 +18,11 @@
     <!-- <ion-item-divider></ion-item-divider> -->
     <ion-list-header>Avatar</ion-list-header>
     <ion-item>
-      <!-- <ion-label>Avatar</ion-label> -->
-      <img width="200" src="https://thenib.imgix.net/usq/1d97429f-4a64-4d52-bfdb-c36172c05228/this-is-not-fine-001-dae9d5.png?auto=compress,format">
+      <ion-card>
+        <!-- <ion-label>Avatar</ion-label> -->
+        <img id="avatar" (click)="takePicture()" width="100" src="https://thenib.imgix.net/usq/1d97429f-4a64-4d52-bfdb-c36172c05228/this-is-not-fine-001-dae9d5.png?auto=compress,format">
+        <button ion-button block (click)="takePicture()">Update Avatar</button>
+      </ion-card>
     </ion-item>
     <!-- <ion-item-divider></ion-item-divider> -->
     <ion-list-header>Preferences</ion-list-header>

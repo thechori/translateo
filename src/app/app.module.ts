@@ -24,6 +24,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { Camera } from '@ionic-native/camera';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
 
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
@@ -64,7 +65,8 @@ import { IonicStorageModule } from '@ionic/storage';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ItemService,
     Deeplinks,
-    Camera
+    Camera,
+    Base64ToGallery
   ]
 })
 export class AppModule {}
