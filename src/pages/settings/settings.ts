@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
 
 @Component({
   selector: 'page-settings',
@@ -10,8 +12,15 @@ import { AlertController } from 'ionic-angular';
 export class SettingsPage {
 
   public settings: any
+  public base64Image: string;
 
-  constructor(public navCtrl: NavController, public storage: Storage, public alertCtrl: AlertController) {
+  constructor(
+    public navCtrl: NavController,
+    public storage: Storage,
+    public alertCtrl: AlertController,
+    public camera: Camera,
+    public base64ToGallery: Base64ToGallery
+  ) {
 
     // Defaults
     this.settings = {
@@ -19,7 +28,8 @@ export class SettingsPage {
       lastName: "",
       gender: "",
       proMode: false,
-      defaultLanguage: ""
+      defaultLanguage: "",
+      avatar: ""
     }
 
     // When the storage is ready, retrieve the data and set it to the settings object
@@ -37,6 +47,7 @@ export class SettingsPage {
           this.settings.gender = settings.gender,
           this.settings.proMode = settings.proMode,
           this.settings.defaultLanguage = settings.defaultLanguage
+          this.settings.avatar = settings.avatar
         }
       })
     })
@@ -55,6 +66,43 @@ export class SettingsPage {
         ]
       }).present()
     })
+  }
+
+  takePicture() {
+    const options: CameraOptions = {
+      quality: 100,
+      // destinationType Notes:
+      // NATIVE_URI saves to iOS gallery, but does not work in img.src
+      // DATA_URL does not save to iOS gallery, but works in img.src
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64:
+      let base64Image = 'data:image/jpeg;base64,' + imageData;
+      console.log("image:");
+      console.log(base64Image);
+
+      // Populate the image with the data
+      (<HTMLImageElement>document.getElementById('avatar')).src = base64Image;
+
+      // Save to SQLite local storage db
+      this.settings.avatar = base64Image;
+
+      // Save to gallery .. TODO: FIX THIS
+      this.base64ToGallery.base64ToGallery(base64Image,{
+        prefix: '_img'
+      }).then(
+        res => console.log('Saved image to gallery ', res),
+        err => console.log('Error saving image to gallery ', err)
+      )
+    }, (err) => {
+      // Handle error
+      console.error(err);
+    });
   }
 
 }

@@ -15,16 +15,17 @@
     <ion-item>
       <ion-input type="text" placeholder="Last name" [(ngModel)]="settings.lastName"></ion-input>
     </ion-item>
+    <!-- <ion-item-divider></ion-item-divider> -->
+    <ion-list-header>Avatar</ion-list-header>
     <ion-item>
-      <ion-label>Gender</ion-label>
-      <ion-select [(ngModel)]="settings.gender">
-        <ion-option value="male">Male</ion-option>
-        <ion-option value="female">Female</ion-option>
-      </ion-select>
+      <ion-card>
+        <!-- <ion-label>Avatar</ion-label> -->
+        <img *ngIf="!settings.avatar" id="avatar" (click)="takePicture()" src="https://thenib.imgix.net/usq/1d97429f-4a64-4d52-bfdb-c36172c05228/this-is-not-fine-001-dae9d5.png?auto=compress,format">
+        <img *ngIf="settings.avatar" id="avatar" (click)="takePicture()" src="{{settings.avatar}}">
+        <button ion-button block (click)="takePicture()">Update Avatar</button>
+      </ion-card>
     </ion-item>
-  </ion-list>
-  <ion-item-divider></ion-item-divider>
-  <ion-list>
+    <!-- <ion-item-divider></ion-item-divider> -->
     <ion-list-header>Preferences</ion-list-header>
     <ion-item>
       <ion-label>Pro Mode</ion-label>

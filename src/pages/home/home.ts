@@ -8,7 +8,7 @@ import { Quiz } from '../quiz/quiz';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, ) {
+  constructor(public navCtrl: NavController) {
 
   }
 
@@ -19,5 +19,4 @@ export class HomePage {
   loadQuiz() {
     this.navCtrl.push(Quiz);
   }
-
 }
