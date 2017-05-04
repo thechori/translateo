@@ -54,14 +54,15 @@ export class SettingsPage {
 
       // Save to SQLite local storage db
       this.settings.avatar = base64Image;
+      this.userData.save(this.settings);
 
       // Save to gallery .. TODO: FIX THIS
-      this.base64ToGallery.base64ToGallery(base64Image,{
-        prefix: '_img'
-      }).then(
-        res => console.log('Saved image to gallery ', res),
-        err => console.log('Error saving image to gallery ', err)
-      )
+      // this.base64ToGallery.base64ToGallery(base64Image,{
+      //   prefix: '_img'
+      // }).then(
+      //   res => console.log('Saved image to gallery ', res),
+      //   err => console.log('Error saving image to gallery ', err)
+      // )
     }, (err) => {
       // Handle error
       console.error(err);

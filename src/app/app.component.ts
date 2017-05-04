@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, AlertController, Nav } from 'ionic-angular';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,8 +25,7 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     deeplinks: Deeplinks,
-    alertCtrl: AlertController,
-    userData: UserData
+    userData: UserData // Fetches data from SQLite local storage db
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

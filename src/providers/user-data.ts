@@ -36,17 +36,6 @@ export class UserData {
           this.settings.avatar = settings.avatar
         }
       })
-
-      // Notify user
-      alertCtrl.create({
-        title: 'UserData',
-        message: 'This provider has been initialized.',
-        buttons: [
-          {
-            text: 'Close'
-          }
-        ]
-      }).present()
     }, (error) => {
       console.error("There was an error initializing the local storage");
     });
