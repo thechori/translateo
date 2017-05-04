@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, AlertController, Nav } from 'ionic-angular';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -9,6 +9,9 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { NumbersQuiz } from '../pages/quiz/quizzes/numbers';
 import { DescriptionsQuiz } from '../pages/quiz/quizzes/descriptions';
 import { GreetingsQuiz } from '../pages/quiz/quizzes/greetings';
+
+// Services
+import { UserData } from '../providers/user-data';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +25,7 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     deeplinks: Deeplinks,
-    alertCtrl: AlertController
+    userData: UserData // Fetches data from SQLite local storage db
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -49,6 +52,7 @@ export class MyApp {
         console.log("no match found..")
         console.warn(nomatch);
       })
-    });
+
+    }); // end platform.ready
   }
 }
