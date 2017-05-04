@@ -20,7 +20,8 @@
     <ion-item>
       <ion-card>
         <!-- <ion-label>Avatar</ion-label> -->
-        <img id="avatar" (click)="takePicture()" width="100" src="https://thenib.imgix.net/usq/1d97429f-4a64-4d52-bfdb-c36172c05228/this-is-not-fine-001-dae9d5.png?auto=compress,format">
+        <img *ngIf="!settings.avatar" id="avatar" (click)="takePicture()" src="https://thenib.imgix.net/usq/1d97429f-4a64-4d52-bfdb-c36172c05228/this-is-not-fine-001-dae9d5.png?auto=compress,format">
+        <img *ngIf="settings.avatar" id="avatar" (click)="takePicture()" src="{{settings.avatar}}">
         <button ion-button block (click)="takePicture()">Update Avatar</button>
       </ion-card>
     </ion-item>

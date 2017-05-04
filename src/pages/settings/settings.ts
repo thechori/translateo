@@ -28,7 +28,8 @@ export class SettingsPage {
       lastName: "",
       gender: "",
       proMode: false,
-      defaultLanguage: ""
+      defaultLanguage: "",
+      avatar: ""
     }
 
     // When the storage is ready, retrieve the data and set it to the settings object
@@ -46,6 +47,7 @@ export class SettingsPage {
           this.settings.gender = settings.gender,
           this.settings.proMode = settings.proMode,
           this.settings.defaultLanguage = settings.defaultLanguage
+          this.settings.avatar = settings.avatar
         }
       })
     })
@@ -69,6 +71,9 @@ export class SettingsPage {
   takePicture() {
     const options: CameraOptions = {
       quality: 100,
+      // destinationType Notes:
+      // NATIVE_URI saves to iOS gallery, but does not work in img.src
+      // DATA_URL does not save to iOS gallery, but works in img.src
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
@@ -82,15 +87,18 @@ export class SettingsPage {
       console.log(base64Image);
 
       // Populate the image with the data
-      (<HTMLImageElement>document.getElementById('myImage')).src = base64Image;
+      (<HTMLImageElement>document.getElementById('avatar')).src = base64Image;
+
+      // Save to SQLite local storage db
+      this.settings.avatar = base64Image;
 
       // Save to gallery .. TODO: FIX THIS
-      // this.base64ToGallery.base64ToGallery(base64Image,{
-      //   prefix: '_img'
-      // }).then(
-      //   res => console.log('Saved image to gallery ', res),
-      //   err => console.log('Error saving image to gallery ', err)
-      // )
+      this.base64ToGallery.base64ToGallery(base64Image,{
+        prefix: '_img'
+      }).then(
+        res => console.log('Saved image to gallery ', res),
+        err => console.log('Error saving image to gallery ', err)
+      )
     }, (err) => {
       // Handle error
       console.error(err);
