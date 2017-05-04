@@ -17,6 +17,7 @@ import { GreetingsQuiz } from '../pages/quiz/quizzes/greetings';
 
 // Services
 import { ItemService } from '../providers/item-service';
+import { UserData } from '../providers/user-data';
 
 
 // Plugins
@@ -66,7 +67,8 @@ import { IonicStorageModule } from '@ionic/storage';
     ItemService,
     Deeplinks,
     Camera,
-    Base64ToGallery
+    Base64ToGallery,
+    UserData
   ]
 })
 export class AppModule {}

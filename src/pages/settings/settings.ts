@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
+import { UserData } from '../../providers/user-data';
 
 @Component({
   selector: 'page-settings',
@@ -17,55 +17,18 @@ export class SettingsPage {
   constructor(
     public navCtrl: NavController,
     public storage: Storage,
-    public alertCtrl: AlertController,
     public camera: Camera,
-    public base64ToGallery: Base64ToGallery
+    public base64ToGallery: Base64ToGallery,
+    public userData: UserData
   ) {
+    // Initialize the component's settings property with data from provider
+    this.settings = userData.settings;
 
-    // Defaults
-    this.settings = {
-      firstName: "",
-      lastName: "",
-      gender: "",
-      proMode: false,
-      defaultLanguage: "",
-      avatar: ""
-    }
-
-    // When the storage is ready, retrieve the data and set it to the settings object
-    storage.ready().then(() => {
-      console.log("Storage ready");
-
-      // Retrieve data from local storage
-      storage.get("settings").then((settings) => {
-        // Check for null settings object
-        if (!settings) {
-          console.log("no settings found..");
-        } else {
-          this.settings.firstName = settings.firstName,
-          this.settings.lastName = settings.lastName,
-          this.settings.gender = settings.gender,
-          this.settings.proMode = settings.proMode,
-          this.settings.defaultLanguage = settings.defaultLanguage
-          this.settings.avatar = settings.avatar
-        }
-      })
-    })
   }
 
   // Save data to local storage
   save() {
-    this.storage.set("settings", this.settings).then((data) => {
-      this.alertCtrl.create({
-        title: 'Settings',
-        message: 'Your settings have been successfully saved.',
-        buttons: [
-          {
-            text: 'Close'
-          }
-        ]
-      }).present()
-    })
+    this.userData.save(this.settings);
   }
 
   takePicture() {

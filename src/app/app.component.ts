@@ -10,6 +10,9 @@ import { NumbersQuiz } from '../pages/quiz/quizzes/numbers';
 import { DescriptionsQuiz } from '../pages/quiz/quizzes/descriptions';
 import { GreetingsQuiz } from '../pages/quiz/quizzes/greetings';
 
+// Services
+import { UserData } from '../providers/user-data';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -22,7 +25,8 @@ export class MyApp {
     statusBar: StatusBar,
     splashScreen: SplashScreen,
     deeplinks: Deeplinks,
-    alertCtrl: AlertController
+    alertCtrl: AlertController,
+    userData: UserData
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -49,6 +53,7 @@ export class MyApp {
         console.log("no match found..")
         console.warn(nomatch);
       })
-    });
+
+    }); // end platform.ready
   }
 }
