@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MediaPlugin, MediaObject } from '@ionic-native/media';
 
 /**
  * Generated class for the AudioPlayer component.
@@ -18,13 +19,21 @@ export class AudioPlayer {
   isPaused: boolean;
   isStopped: boolean;
 
-  constructor() {
+  file: MediaObject;
+
+  constructor(private media: MediaPlugin) {
     console.log('Hello AudioPlayer Component');
-    this.title = 'Hello World';
+    this.title = 'Ouroboros';
     this.src = 'http://incompetech.com/music/royalty-free/mp3-preview2/Ouroboros.mp3';
+    // this.src = '../../assets/media/Ouroboros.mp3';
     this.isPlaying = false;
     this.isPaused = false;
     this.isStopped = true;
+
+    this.file = media.create(this.src, function(status) {
+      console.log("media status:")
+      console.log(status)
+    });
   }
 
   play() {
@@ -37,6 +46,8 @@ export class AudioPlayer {
     this.isPlaying = true;
     this.isPaused = false;
     this.isStopped = false;
+
+    this.file.play();
   }
 
   pause() {
@@ -49,6 +60,8 @@ export class AudioPlayer {
     this.isPlaying = false;
     this.isPaused = true;
     this.isStopped = false;
+
+    this.file.pause();
   }
 
   stop() {
@@ -61,6 +74,8 @@ export class AudioPlayer {
     this.isPlaying = false;
     this.isPaused = false;
     this.isStopped = true;
+
+    this.file.stop();
   }
 
 
