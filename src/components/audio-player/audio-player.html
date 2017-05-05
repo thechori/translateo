@@ -6,8 +6,8 @@
         <ion-icon item-right name="musical-notes" style="font-size: 4em;"></ion-icon>
       </ion-col>
       <ion-col col-9>
-        <p><b>Now playing</b>:</p>
-        <p>{{title}}</p>
+        <p class="now-playing"><b>Now playing</b>:</p>
+        <p class="title">{{title}}</p>
         <button ion-button small (click)="play()" [class.active]="isPlaying"><ion-icon name="play"></ion-icon></button>
         <button ion-button small (click)="pause()"[class.active]="isPaused"><ion-icon name="pause"></ion-icon></button>
         <button ion-button small (click)="stop()"[class.active]="isStopped"><ion-icon name="square"></ion-icon></button>
