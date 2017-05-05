@@ -7,26 +7,11 @@
       </ion-col>
       <ion-col col-9>
         <p><b>Now playing</b>:</p>
-        <p>{{text}}</p>
-        <button ion-button small (click)="play()"><ion-icon name="play"></ion-icon></button>
-        <button ion-button small (click)="pause()"><ion-icon name="pause"></ion-icon></button>
-        <button ion-button small (click)="stop()"><ion-icon name="square"></ion-icon></button>
+        <p>{{title}}</p>
+        <button ion-button small (click)="play()" [class.active]="isPlaying"><ion-icon name="play"></ion-icon></button>
+        <button ion-button small (click)="pause()"[class.active]="isPaused"><ion-icon name="pause"></ion-icon></button>
+        <button ion-button small (click)="stop()"[class.active]="isStopped"><ion-icon name="square"></ion-icon></button>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-
-
-  <!-- <div>
-    <ion-icon item-right name="musical-notes"></ion-icon>
-    <p><b>Now playing</b>:</p>
-    <p>{{text}}</p>
-
-  </div>
-  <div>
-    <button ion-button small round (click)="play()"><ion-icon name="play"></ion-icon></button>
-    <button ion-button small round (click)="pause()"><ion-icon name="pause"></ion-icon></button>
-    <button ion-button small round (click)="stop()"><ion-icon name="square"></ion-icon></button>
-  </div> -->
 </div>
