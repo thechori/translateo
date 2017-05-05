@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MediaPlugin, MediaObject } from '@ionic-native/media';
+import { Platform } from 'ionic-angular';
 
 /**
  * Generated class for the AudioPlayer component.
@@ -21,19 +22,28 @@ export class AudioPlayer {
 
   file: MediaObject;
 
-  constructor(private media: MediaPlugin) {
+  constructor(private media: MediaPlugin, public platform: Platform) {
     console.log('Hello AudioPlayer Component');
     this.title = 'Ouroboros';
-    this.src = 'http://incompetech.com/music/royalty-free/mp3-preview2/Ouroboros.mp3';
-    // this.src = '../../assets/media/Ouroboros.mp3';
+
+    // TODO: Migrate this to a local file -- the Media plugin seems to be causing a long
+    // running thread which is causing warnings to appear.
+    // "THREAD WARNING: ['Media'] took 17ms. PLugin should use a background thread."
+    // this.src = 'http://incompetech.com/music/royalty-free/mp3-preview2/Ouroboros.mp3';
+    this.src = '../../assets/media/Ouroboros.mp3';
     this.isPlaying = false;
     this.isPaused = false;
     this.isStopped = true;
 
-    this.file = media.create(this.src, function(status) {
-      console.log("media status:")
-      console.log(status)
-    });
+    if (platform.is('cordova')) {
+      console.log("You are on a Cordova device");
+      console.log(platform.platforms());
+      this.file = media.create(this.src, function(status) {
+        console.log("media status:")
+        console.log(status)
+      });
+    }
+
   }
 
   play() {
@@ -47,7 +57,8 @@ export class AudioPlayer {
     this.isPaused = false;
     this.isStopped = false;
 
-    this.file.play();
+    if (this.platform.is('cordova'))
+      this.file.play();
   }
 
   pause() {
@@ -61,7 +72,8 @@ export class AudioPlayer {
     this.isPaused = true;
     this.isStopped = false;
 
-    this.file.pause();
+    if (this.platform.is('cordova'))
+      this.file.pause();
   }
 
   stop() {
@@ -75,7 +87,8 @@ export class AudioPlayer {
     this.isPaused = false;
     this.isStopped = true;
 
-    this.file.stop();
+    if (this.platform.is('cordova'))
+      this.file.stop();
   }
 
 
