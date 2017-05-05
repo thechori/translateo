@@ -14,6 +14,8 @@ import { NumbersQuiz } from '../pages/quiz/quizzes/numbers';
 import { DescriptionsQuiz } from '../pages/quiz/quizzes/descriptions';
 import { GreetingsQuiz } from '../pages/quiz/quizzes/greetings';
 
+// Components
+import { AudioPlayer } from '../components/audio-player/audio-player';
 
 // Services
 import { ItemService } from '../providers/item-service';
@@ -40,7 +42,8 @@ import { IonicStorageModule } from '@ionic/storage';
     Quiz,
     NumbersQuiz,
     DescriptionsQuiz,
-    GreetingsQuiz
+    GreetingsQuiz,
+    AudioPlayer
   ],
   imports: [
     BrowserModule,
