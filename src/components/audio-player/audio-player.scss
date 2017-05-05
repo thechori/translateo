@@ -1,0 +1,29 @@
+audio-player > div {
+  border: 1px solid grey;
+  padding: 5px 20px;
+  background-color: black;
+  color: #6AE368;
+  border-radius: 10px;
+
+  .button-ios {
+    background-color: grey;
+  }
+}
+
+audio-player {
+  p {
+    margin: 0;
+  }
+
+  .now-playing {
+
+  }
+
+  .title {
+    color: #ffffff;
+  }
+
+  .active {
+    background-color: #6AE368 !important;
+  }
+}

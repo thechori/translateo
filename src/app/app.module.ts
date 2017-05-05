@@ -14,6 +14,8 @@ import { NumbersQuiz } from '../pages/quiz/quizzes/numbers';
 import { DescriptionsQuiz } from '../pages/quiz/quizzes/descriptions';
 import { GreetingsQuiz } from '../pages/quiz/quizzes/greetings';
 
+// Components
+import { AudioPlayer } from '../components/audio-player/audio-player';
 
 // Services
 import { ItemService } from '../providers/item-service';
@@ -26,6 +28,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { Camera } from '@ionic-native/camera';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
+import { MediaPlugin, MediaObject } from '@ionic-native/media';
 
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
@@ -40,13 +43,15 @@ import { IonicStorageModule } from '@ionic/storage';
     Quiz,
     NumbersQuiz,
     DescriptionsQuiz,
-    GreetingsQuiz
+    GreetingsQuiz,
+    AudioPlayer
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -68,7 +73,8 @@ import { IonicStorageModule } from '@ionic/storage';
     Deeplinks,
     Camera,
     Base64ToGallery,
-    UserData
+    UserData,
+    MediaPlugin
   ]
 })
 export class AppModule {}
