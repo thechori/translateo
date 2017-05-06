@@ -14,7 +14,10 @@ import { Platform } from 'ionic-angular';
 })
 export class AudioPlayer {
 
+  // Bound from input parameter on component
+  @Input()
   title: string;
+
   src: string;
   isPlaying: boolean;
   isPaused: boolean;
@@ -27,8 +30,6 @@ export class AudioPlayer {
 
   constructor(private media: MediaPlugin, public platform: Platform) {
     console.log('Hello AudioPlayer Component');
-    // this.title = 'Ouroboros';
-    // this.title =
 
     // TODO: Migrate this to a local file -- the Media plugin seems to be causing a long
     // running thread which is causing warnings to appear.

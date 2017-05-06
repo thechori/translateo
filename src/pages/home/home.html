@@ -12,6 +12,9 @@
   <br>
   <button ion-button color="secondary"  (click)="loadQuiz()">Take a Quiz</button>
   <br>
+  <!-- IMPORTANT: Surround brackets around the attribute (e.g., [title]="...") will result
+                  in the use of a variable passed from this component. Without brackets,
+                  the actual string inside of the quotes will be passed. -->
   <audio-player [title]="songTitle"></audio-player>
 
 </ion-content>
