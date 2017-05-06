@@ -36,3 +36,4 @@ This version contains the basic functionality for the application and include th
   - Camera access
   - Deeplinking
   - SQLite local storage
+  - Media player
