@@ -9,6 +9,8 @@ import { AudioPlayer } from '../../components/audio-player/audio-player';
 })
 export class HomePage {
 
+  songTitle: string = "John Mayer - Gravity"
+
   constructor(public navCtrl: NavController) {
 
   }
