@@ -13,7 +13,8 @@ import { Quiz } from '../pages/quiz/quiz';
 import { NumbersQuiz } from '../pages/quiz/quizzes/numbers';
 import { DescriptionsQuiz } from '../pages/quiz/quizzes/descriptions';
 import { GreetingsQuiz } from '../pages/quiz/quizzes/greetings';
-import { Login } from '../pages/login/login';
+import { LoginPage } from '../pages/login-page/login-page';
+import { RegisterPage } from '../pages/register-page/register-page';
 
 // Components
 import { AudioPlayer } from '../components/audio-player/audio-player';
@@ -46,7 +47,8 @@ import { IonicStorageModule } from '@ionic/storage';
     DescriptionsQuiz,
     GreetingsQuiz,
     AudioPlayer,
-    Login
+    LoginPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { IonicStorageModule } from '@ionic/storage';
     NumbersQuiz,
     DescriptionsQuiz,
     GreetingsQuiz,
-    Login
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
