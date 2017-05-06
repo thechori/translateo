@@ -15,6 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class Login {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    // navCtrl.setRoot(Login); // Causes an infinite loop
   }
 
   ionViewDidLoad() {
