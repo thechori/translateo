@@ -25,13 +25,13 @@ import { UserData } from '../providers/user-data';
 // Plugins
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpModule } from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage';
 import { Deeplinks } from '@ionic-native/deeplinks';
 import { Camera } from '@ionic-native/camera';
 import { Base64ToGallery } from '@ionic-native/base64-to-gallery';
-import { MediaPlugin, MediaObject } from '@ionic-native/media';
-
-import { HttpModule } from '@angular/http';
-import { IonicStorageModule } from '@ionic/storage';
+import { MediaPlugin } from '@ionic-native/media';
+import { ThemeableBrowser } from '@ionic-native/themeable-browser';
 
 @NgModule({
   declarations: [
@@ -50,8 +50,7 @@ import { IonicStorageModule } from '@ionic/storage';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    IonicStorageModule.forRoot(),
-
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -74,7 +73,8 @@ import { IonicStorageModule } from '@ionic/storage';
     Camera,
     Base64ToGallery,
     UserData,
-    MediaPlugin
+    MediaPlugin,
+    ThemeableBrowser
   ]
 })
 export class AppModule {}
