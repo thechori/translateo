@@ -84,5 +84,10 @@ export class HomePage {
   };
 
     let browser: ThemeableBrowserObject = this.browser.create('https://engadget.com', '_blank', options);
+
+    // browser.on('asd').subscribe(()=>{
+    //
+    // })
+
   }
 }
